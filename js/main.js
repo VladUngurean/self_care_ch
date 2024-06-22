@@ -137,21 +137,22 @@
 })(jQuery);
 
 
-// fixed cart margin 
+// // fixed cart margin 
 
-document.addEventListener('scroll', function() {
-  const fixedElement = document.querySelector('.shopping-cart-container');
+// let navbar = document.querySelector(".navbar").offsetHeight;
+// console.log(navbar);
+
+// document.addEventListener('scroll', function() {
+//   const fixedElement = document.querySelector('.shopping-cart-container');
   
-  if (window.scrollY > 50) {
-    fixedElement.style.position = 'fixed';
-    
-    fixedElement.style.top = '5px';
-    fixedElement.style.left = 'auto';
-    fixedElement.style.right = '10px';
-  } else {
-    fixedElement.style.position = 'absolute';
-    fixedElement.style.top = '5px';
-    fixedElement.style.left = '50%';
-    fixedElement.style.right = '50%';
-  }
-});
+//   if (window.scrollY > 50) {
+//     fixedElement.style.top = '5px';
+//     fixedElement.style.left = 'auto';
+//     fixedElement.style.right = '10px';
+//   } else {
+//     // fixedElement.style.position = 'absolute';
+//     fixedElement.style.top = '5px';
+//     // fixedElement.style.left = '50%';
+//     // fixedElement.style.right = '50%';
+//   }
+// });
