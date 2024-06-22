@@ -16,6 +16,10 @@ Version: 1.0.0
 8. Preloader style
 */
 
+html {
+  scroll-behavior: smooth;
+}
+
 /* ===== 1. Header Style  ====*/
 .navbar a.navbar-brand {
   color: #121212;
@@ -1092,7 +1096,7 @@ button.close,
   z-index: 2;
 }
 #special {
-  background: url(img/02.png);
+  background: url(../img/02.png);
   background-attachment: fixed;
 }
 
@@ -1525,7 +1529,7 @@ section.section-min.nnrr {
 }
 .index-3 #testimonials.testimonials {
   padding: 0 0;
-  background: url(assets-for-index-2/img/tbgestimonial.jpg);
+  background: url(../img/tbgestimonial.jpg);
   background-size: cover;
   background-attachment: scroll;
   background-repeat: no-repeat;
