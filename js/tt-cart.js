@@ -33,7 +33,7 @@ window.onload = function () {
 
   $(document).on("click", ".cart-item-remove", function () {
     var itemId = $(this).parent(".cart-item").data("id");
-    var itemCost = $(this).parent(".cart-item").find(".cvalue").text();
+    var itemCost = parseFloat($(this).parent(".cart-item").find(".cvalue").text());
     removeItem(itemId, itemCost);
     this.parentNode.outerHTML = "";
     toggleEptyCart();
@@ -126,17 +126,11 @@ window.onload = function () {
   }
 
   function removeItem(id, cost) {
-    cost = parseFloat(cost); // Ensure cost is a number
     if (cartItems[id]) {
-      cartItems[id].quantity -= 1;
-      if (cartItems[id].quantity <= 0) {
-        delete cartItems[id];
-        document.querySelector("#item" + id).remove();
-      } else {
-        var itemElement = document.querySelector("#item" + id + " .cart-item-quantity");
-        itemElement.textContent = "Quantity: " + cartItems[id].quantity;
-      }
-      removeCost(cost);
+      var totalItemCost = cartItems[id].quantity * cost;
+      delete cartItems[id];
+      document.querySelector("#item" + id).remove();
+      removeCost(totalItemCost);
     }
   }
 
