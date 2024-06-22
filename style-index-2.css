@@ -1009,7 +1009,7 @@ a:focus {
   width: 45px;
 }
 .navbar-header .navbar-toggle {
-  margin-top: 27px;
+  /* margin-top: 27px; */
 }
 .btn:hover,
 .btn:focus,
@@ -1018,7 +1018,8 @@ a:focus {
 }
 /*update style*/
 .navbar .navbar-header {
-  margin-top: 17px;
+  /* margin-top: 17px; */
+  padding: 17px;
   width: auto;
 }
 .f_logo img {
