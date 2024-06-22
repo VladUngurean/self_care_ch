@@ -25,6 +25,7 @@ Version: 1.0.0
   margin-top: 0;
   padding: 0;
   text-transform: uppercase;
+  max-height: 80px;
 }
 #myNavbar .nav.navbar-nav {
   text-align: right;
@@ -1018,7 +1019,7 @@ a:focus {
 /*update style*/
 .navbar .navbar-header {
   margin-top: 17px;
-  width: 15%;
+  width: auto;
 }
 .f_logo img {
   margin-bottom: 20px;
