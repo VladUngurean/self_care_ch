@@ -3,7 +3,6 @@ window.onload = function () {
   var curName = 0;
   var curImage = 0; // Add curImage variable
   var cartItems = {}; // Use an object to store cart items
-  var cindex = 0; // Reintroduce cindex
   var fx = 0,
     fy = 0;
   var tx = 0,
@@ -15,7 +14,7 @@ window.onload = function () {
   document.getElementById("cost_delivery").innerHTML = delivery.toFixed(2);
   for (var i = 0; i < item_list.length; i++) {
     item_list[i].addEventListener("click", function (ev) {
-      curCost = this.getAttribute("data-cost");
+      curCost = parseFloat(this.getAttribute("data-cost"));
       curName = this.getAttribute("data-name");
       curImage = this.getAttribute("data-image");
       var id = this.getAttribute("data-id");
@@ -35,14 +34,6 @@ window.onload = function () {
     var itemId = $(this).parent(".cart-item").data("id");
     var itemCost = parseFloat($(this).parent(".cart-item").find(".cvalue").text());
     removeItem(itemId, itemCost);
-    this.parentNode.outerHTML = "";
-    toggleEptyCart();
-    var curCounter = $("#items .cart-item").length;
-    $("#items-counter").empty();
-    document.getElementById("items-counter").innerHTML +=
-      "<span class='animate'>" +
-      curCounter +
-      "<span class='circle'></span></span>";
   });
 
   $(document).on("click", ".cart-item-increase", function () {
@@ -65,7 +56,6 @@ window.onload = function () {
       itemElement.textContent = "Quantity: " + cartItems[id].quantity;
     } else {
       cartItems[id] = { cost: cost, name: name, image: image, quantity: 1 };
-      cindex++;
       document.getElementById("items").innerHTML +=
         "<div class='cart-item hidden' id='item" +
         id +
@@ -81,14 +71,9 @@ window.onload = function () {
         cost +
         "</span></span><span class='cart-item-quantity'>Quantity: 1</span><span class='cart-item-remove'><span class='ti-close'></span></span><span class='cart-item-increase'>+</span><span class='cart-item-decrease'>-</span></div>";
     }
-    $("#items-counter").empty();
-    var curCounter = $("#items .cart-item").length;
-    document.getElementById("items-counter").innerHTML +=
-      "<span class='animate'>" +
-      curCounter +
-      "<span class='circle'></span></span>";
+    updateItemCounter();
     document.getElementById("item" + id).classList.remove("hidden");
-    toggleEptyCart();
+    toggleEmptyCart();
     addCost(cost);
   }
 
@@ -98,6 +83,7 @@ window.onload = function () {
       var itemElement = document.querySelector("#item" + id + " .cart-item-quantity");
       itemElement.textContent = "Quantity: " + cartItems[id].quantity;
       addCost(cost);
+      updateItemCounter();
     }
   }
 
@@ -105,51 +91,69 @@ window.onload = function () {
     if (cartItems[id]) {
       cartItems[id].quantity -= 1;
       if (cartItems[id].quantity <= 0) {
-        delete cartItems[id];
-        document.querySelector("#item" + id).remove();
+        removeItem(id, cost * cartItems[id].quantity, true); // true to remove item
       } else {
         var itemElement = document.querySelector("#item" + id + " .cart-item-quantity");
         itemElement.textContent = "Quantity: " + cartItems[id].quantity;
+        removeCost(cost);
+        updateItemCounter();
       }
-      removeCost(cost);
     }
   }
 
   function addCost(amount) {
-    var oldcost = parseFloat(document.getElementById("cost_value").innerHTML);
-    var newcost = oldcost + amount;
+    var oldCost = parseFloat(document.getElementById("cost_value").innerHTML);
+    var newCost = oldCost + amount;
     var delivery = parseFloat($("input[name=delivery]:checked").val());
-    var carttotal = newcost + delivery;
-    document.getElementById("cost_value").innerHTML = newcost.toFixed(2);
-    document.getElementById("total-total").innerHTML = carttotal.toFixed(2);
-    $("#amount").val(carttotal.toFixed(2));
+    var cartTotal = newCost + delivery;
+    document.getElementById("cost_value").innerHTML = newCost.toFixed(2);
+    document.getElementById("total-total").innerHTML = cartTotal.toFixed(2);
+    $("#amount").val(cartTotal.toFixed(2));
   }
 
-  function removeItem(id, cost) {
+  function removeItem(id, cost, removeElement) {
     if (cartItems[id]) {
-      var totalItemCost = cartItems[id].quantity * cost;
-      delete cartItems[id];
-      document.querySelector("#item" + id).remove();
-      removeCost(totalItemCost);
+      if (!removeElement) {
+        var totalItemCost = cartItems[id].quantity * cost;
+        delete cartItems[id];
+        document.querySelector("#item" + id).remove();
+        removeCost(totalItemCost);
+      } else {
+        delete cartItems[id];
+        document.querySelector("#item" + id).remove();
+      }
+      updateItemCounter();
     }
   }
 
   function removeCost(amount) {
-    var oldcost = parseFloat(document.getElementById("cost_value").innerHTML);
-    var newcost = oldcost - amount;
-    if (isNaN(newcost) || newcost < 0) {
-      newcost = 0.0;
+    var oldCost = parseFloat(document.getElementById("cost_value").innerHTML);
+    var newCost = oldCost - amount;
+    if (isNaN(newCost) || newCost < 0) {
+      newCost = 0.0;
     }
     var delivery = parseFloat($("input[name=delivery]:checked").val());
-    var carttotal = newcost + delivery;
-    document.getElementById("total-total").innerHTML = carttotal.toFixed(2);
-    document.getElementById("cost_value").innerHTML = newcost.toFixed(2);
-    $("#amount").val(carttotal.toFixed(2));
+    var cartTotal = newCost + delivery;
+    document.getElementById("total-total").innerHTML = cartTotal.toFixed(2);
+    document.getElementById("cost_value").innerHTML = newCost.toFixed(2);
+    $("#amount").val(cartTotal.toFixed(2));
+  }
+
+  function updateItemCounter() {
+    var totalQuantity = 0;
+    for (var id in cartItems) {
+      totalQuantity += cartItems[id].quantity;
+    }
+    $("#items-counter").empty();
+    document.getElementById("items-counter").innerHTML +=
+      "<span class='animate'>" +
+      totalQuantity +
+      "<span class='circle'></span></span>";
   }
 
   function mover_animator(x1, y1, x2, y2) {
     var div = document.createElement("div");
-    div.className = "mover_animator " + cindex;
+    div.className = "mover_animator";
     div.style.display = "none";
     document.body.appendChild(div);
     $(div)
@@ -167,18 +171,15 @@ window.onload = function () {
           left: window.innerWidth - 200 + "px",
           bottom: window.innerHeight - 240 + "px",
         },
-        300,
-        function () {
-          // Move cost calculation to addItem
-        }
+        300
       );
     setTimeout(function () {
       $(div).remove();
-      toggleEptyCart();
+      toggleEmptyCart();
     }, 200);
   }
 
-  function toggleEptyCart() {
+  function toggleEmptyCart() {
     if (document.querySelectorAll(".cart-item").length >= 1) {
       document.getElementById("cart-summary").style.display = "block";
       document.getElementById("cart-delivery").style.display = "block";
@@ -198,9 +199,9 @@ window.onload = function () {
     $delivery = $(this).val();
     var total = parseFloat(document.getElementById("cost_value").innerHTML);
     var delivery = parseFloat($delivery);
-    var carttotal = total + delivery;
-    document.getElementById("total-total").innerHTML = carttotal.toFixed(2);
-    $("#amount").val(carttotal.toFixed(2));
+    var cartTotal = total + delivery;
+    document.getElementById("total-total").innerHTML = cartTotal.toFixed(2);
+    $("#amount").val(cartTotal.toFixed(2));
     document.getElementById("cost_delivery").innerHTML = delivery.toFixed(2);
   });
 };
