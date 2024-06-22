@@ -636,7 +636,7 @@ span.product-right-section .btn.btn-default.add-item:hover,
 .contact-data .icon {
   color: #f63440;
   display: inline-block;
-  float: left;
+  /* float: left; */
   font-size: 22px;
   height: 43px;
   line-height: 11px;
@@ -973,7 +973,7 @@ a#scrollUp {
 }
 .info_menu > ul {
   display: inline-block;
-  float: left;
+  /* float: left; */
   margin-right: 21px;
 }
 .info_menu li {
@@ -1008,9 +1008,9 @@ a:focus {
 .navbar-header .navbar-toggle .icon-bar {
   width: 45px;
 }
-.navbar-header .navbar-toggle {
-  /* margin-top: 27px; */
-}
+/* .navbar-header .navbar-toggle {
+  margin-top: 27px;
+} */
 .btn:hover,
 .btn:focus,
 .btn.focus {

@@ -394,9 +394,6 @@
     padding-top: 25px;
     padding-bottom: 0;
   }
-  .navbar > .container .navbar-brand {
-    /* margin-top: 0px; */
-  }
 
   .navbar a.navbar-brand {
     margin-bottom: 0px;
@@ -454,11 +451,7 @@
     width: 45%;
   }
   .navbar-brand img {
-    /* margin-top: 9px; */
     width: 70%;
-  }
-  .navbar-header .navbar-toggle {
-    /* margin-top: 3px; */
   }
 }
 

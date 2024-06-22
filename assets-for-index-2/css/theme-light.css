@@ -1500,6 +1500,7 @@
 
 .swiper-slide {
   -webkit-flex-shrink: 0;
+  flex: 0 0 auto;
   -ms-flex: 0 0 auto;
   -ms-flex-negative: 0;
   flex-shrink: 0;
@@ -1837,6 +1838,7 @@ button.swiper-pagination-bullet {
 
 .swiper-container-coverflow .swiper-wrapper,
 .swiper-container-flip .swiper-wrapper {
+  perspective: 1200px;
   -ms-perspective: 1200px;
 }
 
@@ -1937,6 +1939,7 @@ button.swiper-pagination-bullet {
 .swiper-scrollbar {
   border-radius: 10px;
   position: relative;
+  touch-action: none;
   -ms-touch-action: none;
   background: rgba(0, 0, 0, 0.1);
 }
@@ -5279,7 +5282,7 @@ button.close,
 }
 @media (max-width: 479px) {
   .home {
-    padding-top-top: 90px;
+    padding-top: 90px;
   }
 }
 .home h2 {
@@ -5880,7 +5883,7 @@ button.close,
 .contact-data ul li {
   display: inline-block;
   width: 100%;
-  float: left;
+  /* float: left; */
   text-align: left;
   margin-bottom: 1px;
 }
@@ -5929,11 +5932,9 @@ button.close,
   margin-top: 60px;
 }
 
-.product {
-  /* Indicators list style */
-  /* Indicators images style */
-  /* Indicators active image style */
-}
+/* .product {
+
+} */
 .product-list {
   padding: 0;
   width: 100%;
