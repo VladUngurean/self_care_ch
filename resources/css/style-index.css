@@ -695,6 +695,7 @@ a#scrollUp {
   width: 40px;
   border: 1px solid #f63440 !important;
   transition: all 0.4s ease 0s;
+  padding: initial;
 }
 a#scrollUp:hover {
   background: transparent;
@@ -939,19 +940,26 @@ footer .footer-copyright {
   color: #000;
   transform: scale(1.1);
 }
-a#scrollUp {
-  background: #f63440 none repeat scroll 0 0;
-  border-radius: 5px;
-  bottom: 95px;
+
+#scrollUp {
+  display: none;
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 2147483647; /* Ensure it is on top of other elements */
+  background-color: #000;
   color: #fff;
-  font-size: 23px;
-  height: 40px;
-  line-height: 41px;
-  position: absolute;
-  right: 32px;
+  padding: 10px 20px;
+  border-radius: 5px;
   text-align: center;
-  width: 40px;
+  cursor: pointer;
+  /* Add any other styles you need */
 }
+
+#scrollUp:hover {
+  background-color: #555; /* Change background color on hover */
+}
+
 .social {
   height: auto;
   min-height: auto;
