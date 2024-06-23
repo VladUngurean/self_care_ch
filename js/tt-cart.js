@@ -149,6 +149,7 @@ window.onload = function () {
       "<span class='animate'>" +
       totalQuantity +
       "<span class='circle'></span></span>";
+      toggleEmptyCart()
   }
 
   function mover_animator(x1, y1, x2, y2) {
