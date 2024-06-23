@@ -43,6 +43,16 @@ html {
   text-transform: uppercase;
   transition: all 0.4s ease 0s;
 }
+.navbar-nav li > .shopping-cart-container {
+  color: #121212;
+  font-size: 14px;
+  font-weight: 700;
+  position: relative;
+  top: 11px;
+  text-transform: uppercase;
+  transition: all 0.4s ease 0s;
+}
+
 .navbar-nav li.active > a::after,
 .navbar-nav li.active > a::before,
 .navbar-nav li:hover > a::after,
@@ -1737,4 +1747,10 @@ footer hr {
   width: 100% !important;
   height: 100%;
   border: 0;
+}
+
+@media (max-width: 1200px) {
+  #header-cart {
+    display: none !important;
+  }
 }
