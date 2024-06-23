@@ -16,6 +16,11 @@
 	<link href="/resources/css/style-index.css" rel="stylesheet">
 	<link href="/resources/css/font-awesome.min.css" rel="stylesheet">
 	<link href="/resources/css/responsive.css" rel="stylesheet">
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+	<script src="js/load-products.js"></script>
+
 </head>
 
 <body data-offset="50" data-target=".navbar" class="dark-theme index-3">
@@ -211,6 +216,9 @@
 	</div>
 	<!-- Banner Area End Here -->
 
+	<script>
+		const cart = new ShoppingCart();
+	</script>
 
 	<!-- products area -->
 	<section class="section-min section product " id="products">
@@ -222,172 +230,11 @@
 				<div class="col-md-12">
 					<div class="product-list-sliderd">
 						<ul class="swiper-wrappers product-list product-list-vertical">
-							<li class="swiper-slidess text-center">
-								<span class="product-list-left pull-left">
-									<span class="sale-p">sale</span>
-									<a href="#" data-target="#product-01" data-toggle="modal"><img alt="product image" class="product-list-primary-img" src="/resources/img/products/p1.jpg">
-										<img alt="product image" class="product-list-secondary-img" src="/resources/img/products/p3.jpg">
-									</a>
-								</span>
-
-								<a href="#" data-target="#product-01" data-toggle="modal">
-									<span class="product-list-right pull-left">
-										<span class="product-list-name h4 black-color">New life mint soap liquid </span>
-										<span class="product-list-price">$400.00</span>
-										<span class="product-list-price sell-p"><del>$580.00</del></span>
-										<span class="rating-area">
-											<span class="ti-star "></span>
-											<span class="ti-star "></span>
-											<span class="ti-star "></span>
-											<span class="ti-star"></span>
-											<span class="ti-star"></span>
-										</span>
-									</span>
-								</a>
-
-								<button class="btn btn-default add-item" type="button" data-image="/resources/img/products/p1.jpg" data-name="Winter Long Sleeve Black White " data-cost="400.00" data-id="1">
-									add to cart
-								</button>
-							</li>
-
-							<li class="swiper-slidess text-center">
-								<span class="product-list-left pull-left">
-									<a href="#" data-target="#product-01" data-toggle="modal"><img alt="product image" class="product-list-primary-img" src="/resources/img/products/p8.jpg">
-										<img alt="product image" class="product-list-secondary-img" src="/resources/img/products/p4.jpg">
-									</a>
-								</span>
-
-								<a href="#" data-target="#product-01" data-toggle="modal">
-									<span class="product-list-right pull-left">
-										<span class="product-list-name h4 black-color">women black face mask</span>
-										<span class="product-list-price">$300.00</span>
-										<span class="rating-area">
-											<span class="ti-star high_light"></span>
-											<span class="ti-star high_light"></span>
-											<span class="ti-star high_light"></span>
-											<span class="ti-star"></span>
-											<span class="ti-star"></span>
-										</span>
-									</span>
-								</a>
-
-								<button class="btn btn-default add-item" type="button" data-image="img/products/p8.jpg" data-name="women totes lady handbag" data-cost="300.00" data-id="2">
-									add to cart
-								</button>
-							</li>
-
-							<li class="swiper-slidess text-center">
-								<span class="product-list-left pull-left">
-									<span class="sale-p new-p">new</span>
-									<a href="#" data-target="#product-01" data-toggle="modal"><img alt="product image" class="product-list-primary-img" src="/resources/img/products/p4.jpg">
-										<img alt="product image" class="product-list-secondary-img" src="/resources/img/products/p6.jpg">
-									</a>
-								</span>
-
-								<a href="#" data-target="#product-01" data-toggle="modal">
-									<span class="product-list-right pull-left">
-										<span class="product-list-name h4 black-color">eo liquid hand soap</span>
-										<span class="product-list-price">$600.00</span>
-										<span class="rating-area">
-											<span class="ti-star high_light"></span>
-											<span class="ti-star high_light"></span>
-											<span class="ti-star high_light"></span>
-											<span class="ti-star high_light"></span>
-											<span class="ti-star high_light"></span>
-										</span>
-									</span>
-								</a>
-
-								<button class="btn btn-default add-item" type="button" data-image="/resources/img/products/p4.jpg" data-name="Lace water soluble sexy dress" data-cost="600.00" data-id="3">
-									add to cart
-								</button>
-							</li>
-
-							<li class="swiper-slidess  text-center">
-								<span class="product-list-left pull-left">
-									<a href="#" data-target="#product-01" data-toggle="modal"><img alt="product image" class="product-list-primary-img" src="/resources/img/products/p10.jpg">
-										<img alt="product image" class="product-list-secondary-img" src="/resources/img/products/p8.jpg">
-									</a>
-								</span>
-
-								<a href="#" data-target="#product-01" data-toggle="modal">
-									<span class="product-list-right pull-left">
-										<span class="product-list-name h4 black-color">Elegant Formal face mask</span>
-										<span class="product-list-price">$500.00</span>
-										<span class="rating-area">
-											<span class="ti-star high_light"></span>
-											<span class="ti-star high_light"></span>
-											<span class="ti-star "></span>
-											<span class="ti-star"></span>
-											<span class="ti-star"></span>
-										</span>
-									</span>
-								</a>
-
-								<button class="btn btn-default add-item" type="button" data-image="/resources/img/products/p10.jpg" data-name="Elegant Formal Party Dress" data-cost="500.00" data-id="4">
-									add to cart
-								</button>
-							</li>
-
-							<li class="swiper-slidess text-center">
-								<span class="product-list-left pull-left">
-									<span class="sale-p">sale</span>
-									<a href="#" data-target="#product-01" data-toggle="modal"><img alt="product image" class="product-list-primary-img" src="/resources/img/products/p2.jpg">
-										<img alt="product image" class="product-list-secondary-img" src="/resources/img/products/p10.jpg">
-									</a>
-								</span>
-
-								<a href="#" data-target="#product-01" data-toggle="modal">
-									<span class="product-list-right pull-left">
-										<span class="product-list-name h4 black-color">Mini red hand soap</span>
-										<span class="product-list-price">$600.00</span>
-										<span class="product-list-price sell-p"><del>$700.00</del></span>
-										<span class="rating-area">
-											<span class="ti-star high_light"></span>
-											<span class="ti-star high_light"></span>
-											<span class="ti-star high_light"></span>
-											<span class="ti-star"></span>
-											<span class="ti-star"></span>
-										</span>
-									</span>
-								</a>
-
-								<button class="btn btn-default add-item" type="button" data-image="/resources/img/products/p2.jpg" data-name="Mini Dress Ladies Sleeve" data-cost="600.00" data-id="5">
-									add to cart
-								</button>
-							</li>
-
-							<li class="swiper-slidess text-center">
-								<span class="product-list-left pull-left">
-									<a href="#" data-target="#product-01" data-toggle="modal"><img alt="product image" class="product-list-primary-img" src="/resources/img/products/p1.jpg">
-										<img alt="product image" class="product-list-secondary-img" src="/resources/img/products/p2.jpg">
-									</a>
-								</span>
-
-								<a href="#" data-target="#product-01" data-toggle="modal">
-									<span class="product-list-right pull-left">
-										<span class="product-list-name h4 black-color">Life better hand wash</span>
-										<span class="product-list-price">$500.00</span>
-										<span class="rating-area">
-											<span class="ti-star high_light"></span>
-											<span class="ti-star high_light"></span>
-											<span class="ti-star high_light"></span>
-											<span class="ti-star high_light"></span>
-											<span class="ti-star"></span>
-										</span>
-									</span>
-								</a>
-
-								<button class="btn btn-default add-item" type="button" data-image="/resources/img/products/p1.jpg" data-name="Winter Long Sleeve Black White " data-cost="500.00" data-id="6">
-									add to cart
-								</button>
-							</li>
 						</ul>
 					</div>
 				</div>
 
 				<div class="single-category-box2 ">
-
 					<a class="link-btn" href="#"><img src="/resources/img/lg3.jpg" alt="image"></a>
 				</div>
 
@@ -919,9 +766,11 @@
 	<a id="scrollUp" href="#top" title="Scroll to top"></a>
 
 
-	<script defer src="js/jquery-2.2.4.min.js"></script>
-	<script defer src="js/swiper.min.js"></script>
-	<script defer src="js/bootstrap.min.js"></script>
+	<!-- <script src="js/jquery-2.2.4.min.js"></script> -->
+	<script src="js/swiper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+
+
 	<script defer src="js/tt-cart.js"></script>
 	<script defer src="js/scroll-up.js"></script>
 	<script defer src="js/main.js"></script>

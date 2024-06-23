@@ -51,6 +51,8 @@ html {
   top: 11px;
   text-transform: uppercase;
   transition: all 0.4s ease 0s;
+  width: 40px;
+  height: 40px;
 }
 
 .navbar-nav li.active > a::after,
@@ -68,6 +70,7 @@ html {
   right: 4px;
 }
 .navbar-nav li {
+  /* display: none; */
   display: inline-block;
   float: none;
   margin: 0 3px;
@@ -1750,7 +1753,14 @@ footer hr {
 }
 
 @media (max-width: 1200px) {
-  #header-cart {
+  /* #header-cart {
     display: none !important;
+  } */
+  .navbar-nav li > .shopping-cart-container {
+    /* display: block; */
+    /* position: fixed; */
+    /* bottom: 11px; */
+    /* left: 30px; */
+    /* z-index: 9999; */
   }
 }

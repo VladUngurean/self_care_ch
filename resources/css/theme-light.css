@@ -6200,7 +6200,7 @@ button.close,
   overflow: hidden;
 }
 .cart-widget-open .cart-widget-container {
-  background: rgba(0, 0, 0, 0.8) none repeat scroll 0 0;
+  background: rgba(0, 0, 0, 0.4) none repeat scroll 0 0;
   bottom: 0;
   left: 0;
   position: fixed;

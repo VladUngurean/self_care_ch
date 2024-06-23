@@ -1,0 +1,54 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "New life mint soap liquid",
+      "image_primary": "/resources/img/products/p1.jpg",
+      "image_secondary": "/resources/img/products/p3.jpg",
+      "price": 400.00,
+      "discounted_price": 580.00,
+      "rating": 4
+    },
+    {
+      "id": 2,
+      "name": "women black face mask",
+      "image_primary": "/resources/img/products/p8.jpg",
+      "image_secondary": "/resources/img/products/p4.jpg",
+      "price": 300.00,
+      "rating": 3
+    },
+    {
+      "id": 3,
+      "name": "eo liquid hand soap",
+      "image_primary": "/resources/img/products/p4.jpg",
+      "image_secondary": "/resources/img/products/p6.jpg",
+      "price": 600.00,
+      "rating": 5
+    },
+    {
+      "id": 4,
+      "name": "Elegant Formal face mask",
+      "image_primary": "/resources/img/products/p10.jpg",
+      "image_secondary": "/resources/img/products/p8.jpg",
+      "price": 500.00,
+      "rating": 2
+    },
+    {
+      "id": 5,
+      "name": "Mini red hand soap",
+      "image_primary": "/resources/img/products/p2.jpg",
+      "image_secondary": "/resources/img/products/p10.jpg",
+      "price": 600.00,
+      "discounted_price": 700.00,
+      "rating": 3
+    },
+    {
+      "id": 6,
+      "name": "Life better hand wash",
+      "image_primary": "/resources/img/products/p1.jpg",
+      "image_secondary": "/resources/img/products/p2.jpg",
+      "price": 500.00,
+      "rating": 4
+    }
+  ]
+}
