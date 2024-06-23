@@ -1,122 +1,155 @@
-/*-------------------------------------------------------------
-  scrollup jquery 
----------------------------------------------------------------*/
 
-!(function (l, o, e) {
+!(function ($, window, document) {
   "use strict";
-  (l.fn.scrollUp = function (o) {
-    l.data(e.body, "scrollUp") ||
-      (l.data(e.body, "scrollUp", !0), l.fn.scrollUp.init(o));
-  }),
-    (l.fn.scrollUp.init = function (r) {
-      var s,
-        t,
-        c,
-        i,
-        n,
-        a,
-        d,
-        p = (l.fn.scrollUp.settings = l.extend({}, l.fn.scrollUp.defaults, r)),
-        f = !1;
-      // Use existing element with ID scrollUp
-      d = l("#" + p.scrollName);
-      // Set title and HTML content if provided
-      p.scrollTitle && d.attr("title", p.scrollTitle);
-      p.scrollImg || p.scrollTrigger || d.html(p.scrollText);
 
-      d.css({ display: "none", position: "fixed", zIndex: p.zIndex });
+  // Main function to initialize scrollUp
+  $.fn.scrollUp = function (options) {
+    if (!$.data(document.body, "scrollUp")) {
+      $.data(document.body, "scrollUp", true);
+      $.fn.scrollUp.init(options);
+    }
+  };
 
-      // Active overlay (optional)
-      p.activeOverlay &&
-        l("<div/>", { id: p.scrollName + "-active" })
-          .css({
-            position: "absolute",
-            top: p.scrollDistance + "px",
-            width: "100%",
-            borderTop: "1px dotted" + p.activeOverlay,
-            zIndex: p.zIndex,
-          })
-          .appendTo("body");
+  // Initialize the plugin
+  $.fn.scrollUp.init = function (settings) {
+    const config = $.fn.scrollUp.settings = $.extend({}, $.fn.scrollUp.defaults, settings);
+    const $scrollElem = $("#" + config.scrollName);
+    let isVisible = false;
+    let scrollTarget = determineScrollTarget(config);
 
-      // Animation type
-      switch (p.animation) {
-        case "fade":
-          (s = "fadeIn"), (t = "fadeOut"), (c = p.animationSpeed);
-          break;
-        case "slide":
-          (s = "slideDown"), (t = "slideUp"), (c = p.animationSpeed);
-          break;
-        default:
-          (s = "show"), (t = "hide"), (c = 0);
+    setupScrollElem($scrollElem, config);
+    setupActiveOverlay(config);
+    handleScroll($scrollElem, config, isVisible);
+    handleClick($scrollElem, config, scrollTarget);
+  };
+
+  // Setup the scroll element
+  function setupScrollElem($scrollElem, config) {
+    if (config.scrollTitle) {
+      $scrollElem.attr("title", config.scrollTitle);
+    }
+    if (!config.scrollImg && !config.scrollTrigger) {
+      $scrollElem.html(config.scrollText);
+    }
+    $scrollElem.css({ display: "none", position: "fixed", zIndex: config.zIndex });
+  }
+
+  // Setup the active overlay
+  function setupActiveOverlay(config) {
+    if (config.activeOverlay) {
+      $("<div/>", { id: config.scrollName + "-active" })
+        .css({
+          position: "absolute",
+          top: config.scrollDistance + "px",
+          width: "100%",
+          borderTop: "1px dotted" + config.activeOverlay,
+          zIndex: config.zIndex,
+        })
+        .appendTo("body");
+    }
+  }
+
+  // Handle the scroll event
+  function handleScroll($scrollElem, config, isVisible) {
+    const showMethod = getAnimationMethod(config.animation, "show");
+    const hideMethod = getAnimationMethod(config.animation, "hide");
+    const animationSpeed = config.animationSpeed;
+
+    $(window).scroll(function () {
+      const scrollPos = $(window).scrollTop();
+      const threshold = config.scrollFrom === "top" ? config.scrollDistance : $(document).height() - $(window).height() - config.scrollDistance;
+
+      if (scrollPos > threshold) {
+        if (!isVisible) {
+          $scrollElem[showMethod](animationSpeed);
+          isVisible = true;
+        }
+      } else if (isVisible) {
+        $scrollElem[hideMethod](animationSpeed);
+        isVisible = false;
       }
+    });
+  }
 
-      i =
-        "top" === p.scrollFrom
-          ? p.scrollDistance
-          : l(e).height() - l(o).height() - p.scrollDistance;
+  // Handle the click event
+  function handleClick($scrollElem, config, scrollTarget) {
+    $scrollElem.click(function (event) {
+      event.preventDefault();
+      $("html, body").animate({ scrollTop: scrollTarget }, config.scrollSpeed, config.easingType);
+    });
+  }
 
-      n = l(o).scroll(function () {
-        l(o).scrollTop() > i
-          ? f || (d[s](c), (f = !0))
-          : f && (d[t](c), (f = !1));
-      });
+  // Determine the scroll target position
+  function determineScrollTarget(config) {
+    if (typeof config.scrollTarget === "number") {
+      return config.scrollTarget;
+    }
+    if (typeof config.scrollTarget === "string") {
+      return Math.floor($(config.scrollTarget).offset().top);
+    }
+    return 0;
+  }
 
-      p.scrollTarget
-        ? "number" == typeof p.scrollTarget
-          ? (a = p.scrollTarget)
-          : "string" == typeof p.scrollTarget &&
-            (a = Math.floor(l(p.scrollTarget).offset().top))
-        : (a = 0);
+  // Get the appropriate animation method
+  function getAnimationMethod(animation, action) {
+    switch (animation) {
+      case "fade":
+        return action === "show" ? "fadeIn" : "fadeOut";
+      case "slide":
+        return action === "show" ? "slideDown" : "slideUp";
+      default:
+        return action;
+    }
+  }
 
-      d.click(function (o) {
-        o.preventDefault();
-        l("html, body").animate(
-          { scrollTop: a },
-          p.scrollSpeed,
-          p.easingType
-        );
-      });
-    }),
-    (l.fn.scrollUp.defaults = {
-      scrollName: "scrollUp", // Use the existing ID
-      scrollDistance: 300,
-      scrollFrom: "top",
-      scrollSpeed: 300,
-      easingType: "linear",
-      animation: "fade",
-      animationSpeed: 200,
-      scrollTrigger: !1,
-      scrollTarget: !1,
-      scrollText: "Scroll to top",
-      scrollTitle: !1,
-      scrollImg: !1,
-      activeOverlay: !1,
-      zIndex: 2147483647,
-    }),
-    (l.fn.scrollUp.destroy = function (r) {
-      l.removeData(e.body, "scrollUp"),
-        l("#" + l.fn.scrollUp.settings.scrollName).remove(),
-        l("#" + l.fn.scrollUp.settings.scrollName + "-active").remove(),
-        l.fn.jquery.split(".")[1] >= 7
-          ? l(o).off("scroll", r)
-          : l(o).unbind("scroll", r);
-    }),
-    (l.scrollUp = l.fn.scrollUp);
+  // Default settings
+  $.fn.scrollUp.defaults = {
+    scrollName: "scrollUp",
+    scrollDistance: 300,
+    scrollFrom: "top",
+    scrollSpeed: 300,
+    easingType: "linear",
+    animation: "fade",
+    animationSpeed: 200,
+    scrollTrigger: false,
+    scrollTarget: false,
+    scrollText: "Scroll to top",
+    scrollTitle: false,
+    scrollImg: false,
+    activeOverlay: false,
+    zIndex: 2147483647,
+  };
+
+  // Destroy the plugin
+  $.fn.scrollUp.destroy = function (event) {
+    $.removeData(document.body, "scrollUp");
+    $("#" + $.fn.scrollUp.settings.scrollName).remove();
+    $("#" + $.fn.scrollUp.settings.scrollName + "-active").remove();
+    if ($.fn.jquery.split(".")[1] >= 7) {
+      $(window).off("scroll", event);
+    } else {
+      $(window).unbind("scroll", event);
+    }
+  };
+
+  // Assign scrollUp to global jQuery object
+  $.scrollUp = $.fn.scrollUp;
 })(jQuery, window, document);
 
+// Initialize the scrollUp plugin when the document is ready
 $(document).ready(function () {
   $.scrollUp({
-    scrollName: "scrollUp", // Element ID
-    scrollDistance: 300, // Distance from top/bottom before showing element (px)
-    scrollFrom: "top", // 'top' or 'bottom'
-    // scrollSpeed: 4000, // Speed back to top (ms)
-    easingType: "linear", // Scroll to top easing (see http://easings.net/)
-    animation: "fade", // Fade, slide, none
-    animationSpeed: 200, // Animation in speed (ms)
-    scrollText: "UP", // Text for element, can contain HTML
-    scrollTitle: "Back to top", // Set a custom <a> title if required.
-    scrollImg: false, // Set true to use image
-    activeOverlay: false, // Set CSS color to display scrollUp active point, e.g '#00FFFF'
-    zIndex: 999 // Z-Index for the overlay
+    scrollName: "scrollUp",
+    scrollDistance: 300,
+    scrollFrom: "top",
+    scrollSpeed: 300,
+    easingType: "linear",
+    animation: "fade",
+    animationSpeed: 200,
+    scrollText: "UP",
+    scrollTitle: "Back to top",
+    scrollImg: false,
+    activeOverlay: false,
+    zIndex: 999,
   });
 });
