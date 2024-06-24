@@ -77,7 +77,8 @@ function addToCart() {
     let curCost = 0;
     let curName = 0;
     let curImage = 0; // Add curImage variable
-    let cartItems = {}; // Use an object to store cart items
+    let cartItems1 = {}; // Use an object to store cart items for the first cart
+    let cartItems2 = {}; // Use an object to store cart items for the second cart
     let fx = 0,
         fy = 0;
     let tx = 0,
@@ -132,57 +133,76 @@ function addToCart() {
 
     function addItem(id, cost, name, image) {
         cost = parseFloat(cost); // Ensure cost is a number
-        if (cartItems[id]) {
-            cartItems[id].quantity += 1;
-            let itemElement = document.querySelector(
-                "#item" + id + " .cart-item-quantity"
-            );
-            itemElement.textContent = "Quantity: " + cartItems[id].quantity;
+        if (cartItems1[id]) {
+            cartItems1[id].quantity += 1;
+            cartItems2[id].quantity += 1;
+            updateItemElement(id, cartItems1[id].quantity);
         } else {
-            cartItems[id] = { cost: cost, name: name, image: image, quantity: 1 };
-            document.getElementById("items").innerHTML +=
-                "<div class='cart-item hidden' id='item" +
-                id +
-                "' data-id='" +
-                id +
-                "'><span class='cart-item-image'><img alt='" +
-                name +
-                "' src='" +
-                image +
-                "'/></span><span class='cart-item-name h4'>" +
-                name +
-                "</span><span class='cart-item-price'>$<span class='cvalue'>" +
-                cost +
-                "</span></span><span class='cart-item-quantity'>Quantity: 1</span><span class='cart-item-remove'><span class='ti-close'></span></span><span class='cart-item-increase'>+</span><span class='cart-item-decrease'>-</span></div>";
-            }
+            cartItems1[id] = { cost: cost, name: name, image: image, quantity: 1 };
+            cartItems2[id] = { cost: cost, name: name, image: image, quantity: 1 };
+            addItemElement(id, cost, name, image);
+        }
         updateItemCounter();
-        document.querySelector("#item" + id).classList.remove("hidden");
         toggleEmptyCart();
         addCost(cost);
     }
 
+    function updateItemElement(id, quantity) {
+        let itemElements1 = document.querySelectorAll(
+            "#cart1 #item" + id + " .cart-item-quantity"
+        );
+        let itemElements2 = document.querySelectorAll(
+            "#cart2 #item" + id + " .cart-item-quantity"
+        );
+        itemElements1.forEach((el) => (el.textContent = "Quantity: " + quantity));
+        itemElements2.forEach((el) => (el.textContent = "Quantity: " + quantity));
+    }
+
+    function addItemElement(id, cost, name, image) {
+        let itemHTML =
+            "<div class='cart-item' id='item" +
+            id +
+            "' data-id='" +
+            id +
+            "'>" +
+            "<span class='cart-item-image'><img alt='" +
+            name +
+            "' src='" +
+            image +
+            "'/></span>" +
+            "<span class='cart-item-name h4'>" +
+            name +
+            "</span>" +
+            "<span class='cart-item-price'>$<span class='cvalue'>" +
+            cost +
+            "</span></span>" +
+            "<span class='cart-item-quantity'>Quantity: 1</span>" +
+            "<span class='cart-item-remove'><span class='ti-close'></span></span>" +
+            "<span class='cart-item-increase'>+</span>" +
+            "<span class='cart-item-decrease'>-</span>" +
+            "</div>";
+        document.querySelector("#cart1 #items").innerHTML += itemHTML;
+        document.querySelector("#cart2 #items").innerHTML += itemHTML;
+    }
+
     function increaseItem(id, cost) {
-        if (cartItems[id]) {
-            cartItems[id].quantity += 1;
-            let itemElement = document.querySelector(
-                "#item" + id + " .cart-item-quantity"
-            );
-            itemElement.textContent = "Quantity: " + cartItems[id].quantity;
+        if (cartItems1[id]) {
+            cartItems1[id].quantity += 1;
+            cartItems2[id].quantity += 1;
+            updateItemElement(id, cartItems1[id].quantity);
             addCost(cost);
             updateItemCounter();
         }
     }
 
     function decreaseItem(id, cost) {
-        if (cartItems[id]) {
-            cartItems[id].quantity -= 1;
-            if (cartItems[id].quantity <= 0) {
-                removeItem(id, cost * cartItems[id].quantity, true); // true to remove item
+        if (cartItems1[id]) {
+            cartItems1[id].quantity -= 1;
+            cartItems2[id].quantity -= 1;
+            if (cartItems1[id].quantity <= 0) {
+                removeItem(id, cost * cartItems1[id].quantity, true); // true to remove item
             } else {
-                let itemElement = document.querySelector(
-                    "#item" + id + " .cart-item-quantity"
-                );
-                itemElement.textContent = "Quantity: " + cartItems[id].quantity;
+                updateItemElement(id, cartItems1[id].quantity);
                 removeCost(cost);
                 updateItemCounter();
             }
@@ -197,18 +217,32 @@ function addToCart() {
         document.getElementById("cost_value").innerHTML = newCost.toFixed(2);
         document.getElementById("total-total").innerHTML = cartTotal.toFixed(2);
         $("#amount").val(cartTotal.toFixed(2));
+
+        console.log(newCost);
     }
 
     function removeItem(id, cost, removeElement) {
-        if (cartItems[id]) {
+        if (cartItems1[id]) {
             if (!removeElement) {
-                let totalItemCost = cartItems[id].quantity * cost;
-                delete cartItems[id];
-                document.querySelector("#item" + id).remove();
+                let totalItemCost = cartItems1[id].quantity * cost;
+                delete cartItems1[id];
+                delete cartItems2[id];
+                document
+                    .querySelectorAll("#cart1 #item" + id)
+                    .forEach((el) => el.remove());
+                document
+                    .querySelectorAll("#cart2 #item" + id)
+                    .forEach((el) => el.remove());
                 removeCost(totalItemCost);
             } else {
-                delete cartItems[id];
-                document.querySelector("#item" + id).remove();
+                delete cartItems1[id];
+                delete cartItems2[id];
+                document
+                    .querySelectorAll("#cart1 #item" + id)
+                    .forEach((el) => el.remove());
+                document
+                    .querySelectorAll("#cart2 #item" + id)
+                    .forEach((el) => el.remove());
             }
             updateItemCounter();
         }
@@ -225,12 +259,14 @@ function addToCart() {
         document.getElementById("total-total").innerHTML = cartTotal.toFixed(2);
         document.getElementById("cost_value").innerHTML = newCost.toFixed(2);
         $("#amount").val(cartTotal.toFixed(2));
+        console.log(newCost);
+
     }
 
     function updateItemCounter() {
         let totalQuantity = 0;
-        for (let id in cartItems) {
-            totalQuantity += cartItems[id].quantity;
+        for (let id in cartItems1) {
+            totalQuantity += cartItems1[id].quantity;
         }
         $("#items-counter").empty();
         document.getElementById("items-counter").innerHTML +=
@@ -283,18 +319,7 @@ function addToCart() {
             document.getElementById("items-counter").style.display = "none";
         }
     }
-
-    $("input").change(function () {
-        $delivery = $(this).val();
-        let total = parseFloat(document.getElementById("cost_value").innerHTML);
-        let delivery = parseFloat($delivery);
-        let cartTotal = total + delivery;
-        document.getElementById("total-total").innerHTML = cartTotal.toFixed(2);
-        $("#amount").val(cartTotal.toFixed(2));
-        document.getElementById("cost_delivery").innerHTML = delivery.toFixed(2);
-    });
 }
-
 
 async function loadProducts() {
     // Do something asynchronous, like fetching data or processing something
