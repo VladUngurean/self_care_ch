@@ -8,21 +8,21 @@
     width: 100%;
   }
   .navbar-brand img {
-    height: auto;
-    margin-left: 0;
     margin-top: 14px;
+    margin-left: 0;
     width: 40%;
+    height: auto;
   }
   .navbar .navbar-header {
-    padding: 0;
     margin: 0;
+    padding: 0;
   }
   .navbar-header .navbar-toggle {
     margin-top: 22px;
   }
   .navbar a.navbar-brand {
-    margin-bottom: 24px;
     margin-top: 11px;
+    margin-bottom: 24px;
   }
   .home {
     min-height: 75vh;
@@ -126,8 +126,8 @@
   .info_menu {
     display: block;
     margin: 35px 0;
-    overflow: hidden;
     padding-left: 15px;
+    overflow: hidden;
   }
   .navbar .navbar-header {
     margin-top: 17px;
@@ -142,26 +142,26 @@
     width: 100%;
   }
   .navbar-brand img {
-    height: auto;
-    margin-left: 0;
     margin-top: 14px;
+    margin-left: 0;
     width: 40%;
+    height: auto;
   }
   .navbar .navbar-header {
-    padding: 0;
     margin: 0;
+    padding: 0;
   }
   .navbar-header .navbar-toggle {
     margin-top: 22px;
   }
   .navbar a.navbar-brand {
-    margin-bottom: 24px;
     margin-top: 11px;
+    margin-bottom: 24px;
   }
   .home.image-slider .swiper-slide {
-    min-height: auto;
     padding: 150px 20px;
     padding-bottom: 69px;
+    min-height: auto;
   }
   .home {
     min-height: auto;
@@ -182,10 +182,10 @@
     margin-top: 17px;
   }
   .navbar-brand img {
-    height: auto;
-    margin-left: 0;
     margin-top: 26px;
+    margin-left: 0;
     width: 50%;
+    height: auto;
   }
   .banner-box.banner-type-5 .btn.btn-style-1 {
     width: 200px;
@@ -214,8 +214,8 @@
     text-align: left;
   }
   .home-slider-title-main {
-    font-size: 20px;
     padding: 0;
+    font-size: 20px;
   }
   .swiper-slide h1 {
     font-size: 48px;
@@ -281,8 +281,8 @@
     margin: 0;
   }
   .about-counter-single {
-    border-bottom: 0 none;
     margin-bottom: 0;
+    border-bottom: 0 none;
   }
   .navbar-nav li:first-child a {
     border-top: 1px solid #f5f5f5 !important;
@@ -296,30 +296,30 @@
   .info_menu {
     display: block;
     margin: 35px 0;
-    overflow: hidden;
     padding-left: 15px;
+    overflow: hidden;
   }
 
   .navbar a.navbar-brand {
-    color: #121212;
-    font-size: 25px;
-    font-weight: 700;
-    height: auto;
-    margin-bottom: 25px;
     margin-top: 5px;
+    margin-bottom: 25px;
     padding: 0;
-    text-transform: uppercase;
     width: 70%;
+    height: auto;
+    color: #121212;
+    font-weight: 700;
+    font-size: 25px;
+    text-transform: uppercase;
   }
   .navbar-header .navbar-toggle {
-    margin-right: -30px;
     margin-top: 3px;
+    margin-right: -30px;
     padding-right: 0;
   }
   .navbar .navbar-header {
     margin-top: 17px;
-    width: 100%;
     padding: 0;
+    width: 100%;
   }
   h3,
   .h3 {
@@ -332,8 +332,8 @@
     padding-top: 19px;
   }
   .section-min.section.product {
-    padding-bottom: 55px;
     padding-top: 0;
+    padding-bottom: 55px;
   }
   .new-products-area {
     margin-top: -30px;
@@ -370,8 +370,8 @@
     margin: 26px 0 74px;
   }
   .single-category-box .category-content h3 {
-    font-size: 17px;
     margin: 0;
+    font-size: 17px;
   }
   .single-category-box {
     margin-bottom: 64px;
@@ -396,8 +396,8 @@
   }
 
   .navbar a.navbar-brand {
-    margin-bottom: 0px;
     margin-top: 5px;
+    margin-bottom: 0px;
   }
   .navbar-header .navbar-toggle {
     margin-top: 0;
