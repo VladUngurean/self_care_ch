@@ -5036,7 +5036,7 @@ input[type="radio"] .styled:checked + label::after {
 }
 
 body {
-  background: #f5f5f5;
+  background: #ededed;
   overflow-x: hidden;
 }
 
@@ -5940,6 +5940,9 @@ button.close,
   margin-bottom: 30px;
   padding: 0;
   width: 100%;
+  display: grid;
+  gap: 15px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 .product-list-price {
   font-weight: 700;
@@ -5949,7 +5952,7 @@ button.close,
 }
 .product-list li {
   position: relative;
-  margin-bottom: 15px;
+  /* margin-bottom: 15px; */
   padding: 30px 0;
   overflow: hidden;
 }

@@ -151,18 +151,17 @@ body {
   background-color: transparent;
   color: #f63440;
 }
-.section-min.section.product {
-  background: #fff none repeat scroll 0 0;
-}
 .product-list-sliderd {
   display: block;
   margin: 0 -15px;
   overflow: hidden;
 }
 .swiper-wrappers li.swiper-slidess {
-  float: left;
-  padding: 0 15px;
-  width: 33.33%;
+  background-color: #fff;
+  border-radius: 8px;
+  /* float: left; */
+  padding-bottom: 15px;
+  /* width: 33.33%; */
 }
 /* ===== 3. catalog style  ====*/
 .catalog-area {
@@ -221,7 +220,7 @@ body {
   width: auto;
 }
 .product-list li {
-  margin-bottom: 51px;
+  /* margin-bottom: 51px; */
   text-align: left;
 }
 .product-list-vertical li a {
@@ -699,8 +698,8 @@ a {
 
 a#scrollUp {
   position: absolute;
-  right: 32px;
-  bottom: 94px;
+  right: 15px;
+  bottom: 15px;
   transition: all 0.4s ease 0s;
   border: 1px solid #f63440 !important;
   background: #f63440 none repeat scroll 0 0;
@@ -1420,7 +1419,7 @@ button.close,
   display: block;
   position: relative;
   clear: both;
-  background: #fff;
+  /* background: #fff; */
   padding-top: 140px;
   overflow: hidden;
 }
@@ -1542,7 +1541,7 @@ section.section-min.nnrr {
   position: relative;
 }
 .banner-info--inner.two_inr {
-  right: -30%;
+  right: -22%;
   text-align: right !important;
 }
 .h3_banner .banner-box.banner-type-5.banner-hover-3::after {
@@ -1742,8 +1741,11 @@ footer hr {
   }
 }
 
-/* Large Mobile :480px. */
-@media only screen and (min-width: 480px) and (max-width: 767px) {
+#cart2 {
+  display: block;
+  position: fixed;
+  bottom: 15px;
+  left: 15px;
 }
 
 #contact-map {
@@ -1754,10 +1756,4 @@ footer hr {
   border: 0;
   width: 100% !important;
   height: 100%;
-}
-
-@media (max-width: 1200px) {
-  /* #header-cart {
-    display: none !important;
-  } */
 }

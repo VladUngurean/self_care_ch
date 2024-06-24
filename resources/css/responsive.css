@@ -101,17 +101,8 @@
   .contact-form button.btn {
     width: auto;
   }
-  .product-list li span {
-    float: inherit !important;
-  }
   .countdown-price {
     text-align: center;
-  }
-  .swiper-wrappers li.swiper-slidess {
-    width: 50%;
-  }
-  .swiper-wrappers li.swiper-slidess .product-list-left {
-    margin-bottom: 18px;
   }
   .contact-data {
     float: left;
@@ -431,9 +422,6 @@
   .contact-form button.btn {
     width: auto;
   }
-  .product-list li span {
-    float: inherit !important;
-  }
   .footer-newsletter .form-control {
     height: 48px;
   }
@@ -458,5 +446,15 @@
   .navbar-brand img {
     min-height: auto;
     max-height: 20px;
+  }
+}
+@media (max-width: 1199px) {
+  #header-cart {
+    display: none;
+  }
+}
+@media (min-width: 1199px) {
+  #cart2 {
+    display: none;
   }
 }
