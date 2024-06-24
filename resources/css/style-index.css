@@ -118,14 +118,14 @@ body {
   background-position: center center !important;
   background-size: cover !important;
   padding: 31vh 255px 0;
-  min-height: 100vh;
+  min-height: 400px;
   text-align: left;
 }
 .home {
-  min-height: 80vh;
+  min-height: 400px;
 }
 .home.image-slider .home-slider {
-  min-height: 80vh;
+  min-height: 400px;
 }
 .hglight {
   color: #f63440;
@@ -1519,8 +1519,9 @@ section.section-min.nnrr {
 
 /* index-3 style */
 .index-3 .home.image-slider .swiper-slide {
-  padding: 35vh 92px 0;
-  min-height: 100vh;
+  margin-top: 10px;
+  padding: 92px 92px 30px;
+  min-height: 400px;
 }
 .index-3 .swiper-slide h1 {
   font-size: 60px;
