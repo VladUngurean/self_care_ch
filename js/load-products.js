@@ -72,25 +72,33 @@ async function loadProductsFromJSON() {
 }
 // Call the function to load products when the page loads
 //   document.addEventListener('DOMContentLoaded', loadProductsFromJSON);
-
 function addToCart() {
     let curCost = 0;
     let curName = 0;
     let curImage = 0; // Add curImage variable
     let cartItems1 = {}; // Use an object to store cart items for the first cart
     let cartItems2 = {}; // Use an object to store cart items for the second cart
-    let fx = 0,
-        fy = 0;
-    let tx = 0,
-        ty = 0;
+    let fx = 0, fy = 0;
+    let tx = 0, ty = 0;
     let curItem = "";
     let item_list = document.querySelectorAll(".add-item");
     console.log(item_list);
-    $delivery = $("input[name=delivery]:checked").val();
-    let delivery = Number($delivery);
-    document.querySelectorAll("#cost_delivery").forEach(e =>{
-        e.innerHTML = delivery.toFixed(2);
-    })
+
+    function updateDeliveryCost() {
+        $delivery = $("input[name=delivery]:checked").val();
+        let delivery = Number($delivery);
+        document.querySelectorAll("#cost_delivery").forEach(e => {
+            e.innerHTML = delivery.toFixed(2);
+        });
+    }
+
+    updateDeliveryCost(); // Initial call to set the delivery cost
+
+    // Add event listener for delivery option change
+    $("input[name=delivery]").on("change", function() {
+        updateDeliveryCost();
+    });
+
     for (let i = 0; i < item_list.length; i++) {
         item_list[i].addEventListener("click", function (ev) {
             curCost = parseFloat(this.getAttribute("data-cost"));
@@ -111,25 +119,19 @@ function addToCart() {
 
     $(document).on("click", ".cart-item-remove", function () {
         let itemId = $(this).parent(".cart-item").data("id");
-        let itemCost = parseFloat(
-            $(this).parent(".cart-item").find(".cvalue").text()
-        );
+        let itemCost = parseFloat($(this).parent(".cart-item").find(".cvalue").text());
         removeItem(itemId, itemCost);
     });
 
     $(document).on("click", ".cart-item-increase", function () {
         let itemId = $(this).parent(".cart-item").data("id");
-        let itemCost = parseFloat(
-            $(this).parent(".cart-item").find(".cvalue").text()
-        );
+        let itemCost = parseFloat($(this).parent(".cart-item").find(".cvalue").text());
         increaseItem(itemId, itemCost);
     });
 
     $(document).on("click", ".cart-item-decrease", function () {
         let itemId = $(this).parent(".cart-item").data("id");
-        let itemCost = parseFloat(
-            $(this).parent(".cart-item").find(".cvalue").text()
-        );
+        let itemCost = parseFloat($(this).parent(".cart-item").find(".cvalue").text());
         decreaseItem(itemId, itemCost);
     });
 
@@ -150,34 +152,17 @@ function addToCart() {
     }
 
     function updateItemElement(id, quantity) {
-        let itemElements1 = document.querySelectorAll(
-            "#cart1 #item" + id + " .cart-item-quantity"
-        );
-        let itemElements2 = document.querySelectorAll(
-            "#cart2 #item" + id + " .cart-item-quantity"
-        );
+        let itemElements1 = document.querySelectorAll("#cart1 #item" + id + " .cart-item-quantity");
+        let itemElements2 = document.querySelectorAll("#cart2 #item" + id + " .cart-item-quantity");
         itemElements1.forEach((el) => (el.textContent = "Quantity: " + quantity));
         itemElements2.forEach((el) => (el.textContent = "Quantity: " + quantity));
     }
 
     function addItemElement(id, cost, name, image) {
-        let itemHTML =
-            "<div class='cart-item' id='item" +
-            id +
-            "' data-id='" +
-            id +
-            "'>" +
-            "<span class='cart-item-image'><img alt='" +
-            name +
-            "' src='" +
-            image +
-            "'/></span>" +
-            "<span class='cart-item-name h4'>" +
-            name +
-            "</span>" +
-            "<span class='cart-item-price'>$<span class='cvalue'>" +
-            cost +
-            "</span></span>" +
+        let itemHTML = "<div class='cart-item' id='item" + id + "' data-id='" + id + "'>" +
+            "<span class='cart-item-image'><img alt='" + name + "' src='" + image + "'/></span>" +
+            "<span class='cart-item-name h4'>" + name + "</span>" +
+            "<span class='cart-item-price'>$<span class='cvalue'>" + cost + "</span></span>" +
             "<span class='cart-item-quantity'>Quantity: 1</span>" +
             "<span class='cart-item-remove'><span class='ti-close'></span></span>" +
             "<span class='cart-item-increase'>+</span>" +
@@ -233,22 +218,14 @@ function addToCart() {
                 let totalItemCost = cartItems1[id].quantity * cost;
                 delete cartItems1[id];
                 delete cartItems2[id];
-                document
-                    .querySelectorAll("#cart1 #item" + id)
-                    .forEach((el) => el.remove());
-                document
-                    .querySelectorAll("#cart2 #item" + id)
-                    .forEach((el) => el.remove());
+                document.querySelectorAll("#cart1 #item" + id).forEach((el) => el.remove());
+                document.querySelectorAll("#cart2 #item" + id).forEach((el) => el.remove());
                 removeCost(totalItemCost);
             } else {
                 delete cartItems1[id];
                 delete cartItems2[id];
-                document
-                    .querySelectorAll("#cart1 #item" + id)
-                    .forEach((el) => el.remove());
-                document
-                    .querySelectorAll("#cart2 #item" + id)
-                    .forEach((el) => el.remove());
+                document.querySelectorAll("#cart1 #item" + id).forEach((el) => el.remove());
+                document.querySelectorAll("#cart2 #item" + id).forEach((el) => el.remove());
             }
             updateItemCounter();
         }
@@ -266,7 +243,6 @@ function addToCart() {
         document.getElementById("cost_value").innerHTML = newCost.toFixed(2);
         $("#amount").val(cartTotal.toFixed(2));
         console.log(newCost);
-
     }
 
     function updateItemCounter() {
@@ -277,9 +253,7 @@ function addToCart() {
         $(".items-counter").empty();
         document.querySelectorAll(".items-counter").forEach(e => {
             e.innerHTML +=
-            "<span class='animate'>" +
-            totalQuantity +
-            "<span class='circle'></span></span>";
+            "<span class='animate'>" + totalQuantity + "<span class='circle'></span></span>";
         });
         toggleEmptyCart();
     }
@@ -314,44 +288,41 @@ function addToCart() {
 
     function toggleEmptyCart() {
         if (document.querySelectorAll(".cart-item").length >= 1) {
-            document.querySelectorAll("#cart-summary").forEach(e =>{
+            document.querySelectorAll("#cart-summary").forEach(e => {
                 e.style.display = "block";
-            })
-
-            document.querySelectorAll("#cart-delivery").forEach(e =>{
+            });
+            document.querySelectorAll("#cart-delivery").forEach(e => {
                 e.style.display = "block";
-            })
-
-            document.querySelectorAll("#cart-form").forEach(e =>{
+            });
+            document.querySelectorAll("#cart-form").forEach(e => {
                 e.style.display = "block";
-            })
-
-            document.querySelectorAll("#cart-empty").forEach(e =>{
+            });
+            document.querySelectorAll("#cart-empty").forEach(e => {
                 e.style.display = "none";
-            })
-
-            document.querySelectorAll("#items-counter").forEach(e =>{
+            });
+            document.querySelectorAll("#items-counter").forEach(e => {
                 e.style.display = "block";
-            })
+            });
         } else {
-            document.querySelectorAll("#cart-summary").forEach(e =>{
+            document.querySelectorAll("#cart-summary").forEach(e => {
                 e.style.display = "none";
-            })
-            document.querySelectorAll("#cart-delivery").forEach(e =>{
+            });
+            document.querySelectorAll("#cart-delivery").forEach(e => {
                 e.style.display = "none";
-            })
-            document.querySelectorAll("#cart-form").forEach(e =>{
+            });
+            document.querySelectorAll("#cart-form").forEach(e => {
                 e.style.display = "none";
-            })
-            document.querySelectorAll("#cart-empty").forEach(e =>{
+            });
+            document.querySelectorAll("#cart-empty").forEach(e => {
                 e.style.display = "block";
-            })
-            document.querySelectorAll("#items-counter").forEach(e =>{
+            });
+            document.querySelectorAll("#items-counter").forEach(e => {
                 e.style.display = "none";
-            })
+            });
         }
     }
 }
+
 
 async function loadProducts() {
     // Do something asynchronous, like fetching data or processing something
