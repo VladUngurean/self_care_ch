@@ -6127,15 +6127,6 @@ button.close,
   margin-top: 60px;
 }
 
-.shopping-cart-container {
-  /* position: fixed; */
-  /* bottom: 30px; */
-  /* right: 300px; */
-  /* left: 50%; */
-  /* z-index: 999; */
-  /* pointer-events: none; */
-}
-
 .cart-item {
   position: relative;
   float: left;
