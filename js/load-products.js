@@ -85,11 +85,17 @@ function addToCart() {
     console.log(item_list);
 
     function updateDeliveryCost() {
-        $delivery = $("input[name=delivery]:checked").val();
-        let delivery = Number($delivery);
+        let delivery = parseFloat($("input[name=delivery]:checked").val());
         document.querySelectorAll("#cost_delivery").forEach(e => {
             e.innerHTML = delivery.toFixed(2);
         });
+
+        let cartCost = parseFloat(document.querySelector("#cost_value").innerHTML);
+        let totalCost = cartCost + delivery;
+        document.querySelectorAll("#total-total").forEach(e => {
+            e.innerHTML = totalCost.toFixed(2);
+        });
+        $("[id=amount]").val(totalCost.toFixed(2));
     }
 
     updateDeliveryCost(); // Initial call to set the delivery cost
@@ -252,8 +258,7 @@ function addToCart() {
         }
         $(".items-counter").empty();
         document.querySelectorAll(".items-counter").forEach(e => {
-            e.innerHTML +=
-            "<span class='animate'>" + totalQuantity + "<span class='circle'></span></span>";
+            e.innerHTML += "<span class='animate'>" + totalQuantity + "<span class='circle'></span></span>";
         });
         toggleEmptyCart();
     }
@@ -271,15 +276,14 @@ function addToCart() {
                 right: "auto",
             })
             .fadeIn(10)
-            .animate(
-                {
-                    right: "auto",
-                    top: "auto",
-                    left: window.innerWidth - 200 + "px",
-                    bottom: window.innerHeight - 240 + "px",
-                },
-                300
-            );
+            .animate({
+                right: "auto",
+                top: "auto",
+                left: window.innerWidth - 200 + "px",
+                bottom: window.innerHeight - 240 + "px",
+            },
+            300
+        );
         setTimeout(function () {
             $(div).remove();
             toggleEmptyCart();
@@ -322,6 +326,7 @@ function addToCart() {
         }
     }
 }
+
 
 
 async function loadProducts() {
