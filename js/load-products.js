@@ -88,7 +88,9 @@ function addToCart() {
     console.log(item_list);
     $delivery = $("input[name=delivery]:checked").val();
     let delivery = Number($delivery);
-    document.getElementById("cost_delivery").innerHTML = delivery.toFixed(2);
+    document.querySelectorAll("#cost_delivery").forEach(e =>{
+        e.innerHTML = delivery.toFixed(2);
+    })
     for (let i = 0; i < item_list.length; i++) {
         item_list[i].addEventListener("click", function (ev) {
             curCost = parseFloat(this.getAttribute("data-cost"));
@@ -214,9 +216,13 @@ function addToCart() {
         let newCost = oldCost + amount;
         let delivery = parseFloat($("input[name=delivery]:checked").val());
         let cartTotal = newCost + delivery;
-        document.getElementById("cost_value").innerHTML = newCost.toFixed(2);
-        document.getElementById("total-total").innerHTML = cartTotal.toFixed(2);
-        $("#amount").val(cartTotal.toFixed(2));
+        document.querySelectorAll("#cost_value").forEach(e =>{
+            e.innerHTML = newCost.toFixed(2);
+        })
+        document.querySelectorAll("#total-total").forEach(e =>{
+            e.innerHTML = cartTotal.toFixed(2);
+        })
+        $("[id=amount]").val(cartTotal.toFixed(2));
 
         console.log(newCost);
     }
@@ -268,11 +274,13 @@ function addToCart() {
         for (let id in cartItems1) {
             totalQuantity += cartItems1[id].quantity;
         }
-        $("#items-counter").empty();
-        document.getElementById("items-counter").innerHTML +=
+        $(".items-counter").empty();
+        document.querySelectorAll(".items-counter").forEach(e => {
+            e.innerHTML +=
             "<span class='animate'>" +
             totalQuantity +
             "<span class='circle'></span></span>";
+        });
         toggleEmptyCart();
     }
 
@@ -306,17 +314,41 @@ function addToCart() {
 
     function toggleEmptyCart() {
         if (document.querySelectorAll(".cart-item").length >= 1) {
-            document.getElementById("cart-summary").style.display = "block";
-            document.getElementById("cart-delivery").style.display = "block";
-            document.getElementById("cart-form").style.display = "block";
-            document.getElementById("cart-empty").style.display = "none";
-            document.getElementById("items-counter").style.display = "block";
+            document.querySelectorAll("#cart-summary").forEach(e =>{
+                e.style.display = "block";
+            })
+
+            document.querySelectorAll("#cart-delivery").forEach(e =>{
+                e.style.display = "block";
+            })
+
+            document.querySelectorAll("#cart-form").forEach(e =>{
+                e.style.display = "block";
+            })
+
+            document.querySelectorAll("#cart-empty").forEach(e =>{
+                e.style.display = "none";
+            })
+
+            document.querySelectorAll("#items-counter").forEach(e =>{
+                e.style.display = "block";
+            })
         } else {
-            document.getElementById("cart-summary").style.display = "none";
-            document.getElementById("cart-delivery").style.display = "none";
-            document.getElementById("cart-form").style.display = "none";
-            document.getElementById("cart-empty").style.display = "block";
-            document.getElementById("items-counter").style.display = "none";
+            document.querySelectorAll("#cart-summary").forEach(e =>{
+                e.style.display = "none";
+            })
+            document.querySelectorAll("#cart-delivery").forEach(e =>{
+                e.style.display = "none";
+            })
+            document.querySelectorAll("#cart-form").forEach(e =>{
+                e.style.display = "none";
+            })
+            document.querySelectorAll("#cart-empty").forEach(e =>{
+                e.style.display = "block";
+            })
+            document.querySelectorAll("#items-counter").forEach(e =>{
+                e.style.display = "none";
+            })
         }
     }
 }

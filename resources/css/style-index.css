@@ -1740,7 +1740,10 @@ footer hr {
     padding-top: 31px;
   }
 }
-
+.bottom-bar {
+  position: relative;
+  z-index: 9999;
+}
 #cart2 {
   display: block;
   position: fixed;

@@ -41,13 +41,12 @@
   // });
 
   // cart widget toggle
-  $("#items-counter").on("click", function () {
+  $("[id=items-counter]").on("click", function () {
     $("body").toggleClass("cart-widget-open");
   });
-  $("#cart-widget-close").on("click", function () {
+  $("[id=cart-widget-close]").on("click", function () {
     $("body").toggleClass("cart-widget-open");
   });
-
   $(".cart-widget-close-overlay").on("click", function () {
     $("body").toggleClass("cart-widget-open");
   });
