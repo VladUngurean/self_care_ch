@@ -5010,14 +5010,14 @@ input[type="radio"] .styled:checked + label::after {
   .carousel-inner > .item > img,
   .carousel-inner > .item > a > img {
     width: auto;
-    height: 70vh;
+    /* height: 70vh; */
   }
 }
 @media (min-width: 480px) and (max-width: 1199px) {
   .carousel-inner > .item > img,
   .carousel-inner > .item > a > img {
     width: auto;
-    height: 70vh;
+    /* height: 70vh; */
   }
 }
 @media (min-width: 480px) and (max-width: 991px) {

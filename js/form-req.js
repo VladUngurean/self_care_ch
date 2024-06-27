@@ -1,17 +1,17 @@
-// const TOKEN = '7363871608:AAFrCmY9oX2-fYIfEfGIWWiiaRU9BiylqCg';
-// const CHAT_ID = '-1002227620906';
-// const URI_API = `https://api.telegram.org/bot${TOKEN}/sendMessage`;
+const TOKEN = '7384728233:AAEqn5NrLORpp-CpywQkperU_Rk0YS7exLM';
+const CHAT_ID = '951582541';
+const URI_API = `https://api.telegram.org/bot${TOKEN}/sendMessage`;
 
 //TRELLO BOT START
 
 // let cart_items = document.querySelectorAll(".cart-item-name");
 let cart_items = document.querySelectorAll("cart-item");
 cart_items.forEach(e =>{
-    let msg = (
+    let message = (
     e.querySelector(".cart-item-name").innerText +
     e.querySelector(".cart-item-price").innerText +
     e.querySelector(".cart-item-quantity").innerText)
-    msg += msg
+    message += message
 })
 
 let productName = document.getElementById("productName");
@@ -41,30 +41,30 @@ placeOrderForm.addEventListener("submit", ( e ) =>{
 
     let cart_items = document.querySelectorAll(".cart-item");
     let total_price = document.querySelector("#total-total");
-    let msg = "";
+    let message = "";
         cart_items.forEach(e =>{
-            msg += 
+            message += 
             e.querySelector(".cart-item-name").innerText + " " + e.querySelector(".cart-item-price").innerText + "\n" +
             e.querySelector(".cart-item-quantity").innerText + "\n" + "\n"
         })
-        msg += `Цена: ${total_price.innerText} \n Имя: ${nameInput.value} \n Номер: ${inputPhone.value}\n`;
-        console.log(msg);
+        message += `Цена: ${total_price.innerText} \n Имя: ${nameInput.value} \n Номер: ${inputPhone.value}\n`;
+        console.log(message);
 	// console.log(massage);
 
-	// axios.post(URI_API, {
-	// 		chat_id: CHAT_ID,
-	// 		parse_mode: 'html',
-	// 		text: massage
-	// 	})
-	// 	.then( ( res ) => {
-    //         console.log("all good");
-	// 		// location.href = "thank-you-page.html";
-	// 		// alert("All good!")
-	// 	} )
-	// 	.catch( ( err ) => {
-	// 		console.log(err);
-	// 		alert("Ошибка!")
-	// 		sendOrderForm.reset();
-	// 	} )
+	axios.post(URI_API, {
+			chat_id: CHAT_ID,
+			parse_mode: 'html',
+			text: message
+		})
+		.then( ( res ) => {
+            console.log("all good");
+			// location.href = "thank-you-page.html";
+			// alert("All good!")
+		} )
+		.catch( ( err ) => {
+			console.log(err);
+			alert("Ошибка!")
+			sendOrderForm.reset();
+		} )
 });
 
