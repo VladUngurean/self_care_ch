@@ -176,6 +176,10 @@
   .d_none {
     display: none;
   }
+
+  .swiper-wrappers li.swiper-slidess {
+    height: 390px;
+  }
 }
 
 /* small mobile :320px. */
@@ -274,7 +278,7 @@
     width: 100%;
   }
   .swiper-wrappers li.swiper-slidess .product-list-left {
-    margin-bottom: 18px;
+    /* margin-bottom: 18px; */
   }
   .info_menu {
     display: block;
@@ -429,7 +433,7 @@
     width: 100%;
   }
   .swiper-wrappers li.swiper-slidess .product-list-left {
-    margin-bottom: 18px;
+    /* margin-bottom: 18px; */
   }
   .f_logo img {
     width: 45%;
@@ -457,5 +461,10 @@
     opacity: 1;
     pointer-events: all;
     z-index: 99;
+  }
+}
+@media (max-width: 991px) {
+  .swiper-wrappers li.swiper-slidess {
+    height: 390px;
   }
 }

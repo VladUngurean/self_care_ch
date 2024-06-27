@@ -39,7 +39,7 @@ async function loadProductsFromJSON() {
             productName.innerHTML = product.name;
             const productPrice = document.createElement("span");
             productPrice.classList.add("product-list-price");
-            productPrice.textContent = "$" + product.price.toFixed(2);
+            productPrice.textContent = product.price.toFixed(2) + " лей";
             productRight.appendChild(productName);
             productRight.appendChild(productPrice);
 
@@ -50,7 +50,7 @@ async function loadProductsFromJSON() {
             addButton.dataset.name = product.name;
             addButton.dataset.cost = product.price.toFixed(2);
             addButton.dataset.id = product.id;
-            addButton.textContent = "add to cart";
+            addButton.textContent = "Добавить в корзину";
 
             li.appendChild(productLeft);
             li.appendChild(productRight);
@@ -109,7 +109,7 @@ function populateModal(product) {
 
     // Set the modal title and price
     document.querySelector(".modal-body .nk").innerHTML = product.name;
-    document.querySelector(".modal-body .product-right-section span").textContent = "$" + product.price.toFixed(2);
+    document.querySelector(".modal-body .product-right-section span").textContent = product.price.toFixed(2) + " лей";
 
     // Set the modal description
     document.querySelector(".modal-body .product-description h4").innerHTML = product.name;
@@ -121,7 +121,7 @@ function populateModal(product) {
     document.querySelector(".second_info-title").innerHTML = product.additional_info_title;
     document.querySelector(".second_info-text").innerHTML = product.additional_info_text;
 
-    // Set the "add to cart" button data attributes
+    // Set the "Добавить в корзину" button data attributes
     const modalButton = document.querySelector("#modal_button");
     modalButton.dataset.image = product.image_primary;
     modalButton.dataset.name = product.name;
@@ -229,7 +229,7 @@ function addToCart() {
             "<span class='cart-item-remove'><span class='ti-close'></span></span>" +
             "<span class='cart-item-increase'>+</span>" +
             "<span class='cart-item-decrease'>-</span>" +
-            "</div>" + "";
+            "</div>";
         document.querySelector("#items").innerHTML += itemHTML;
         // document.querySelector("#cart2 #items").innerHTML += itemHTML;
     }
@@ -390,7 +390,7 @@ async function loadProducts() {
 async function addFunctionality() {
     await loadProducts(); // Wait for the first function to complete
     // Now you can execute addToCart() or any other logic that should happen after the first function
-    console.log("add to cart functionality done!");
+    console.log("Добавить в корзину functionality done!");
     addToCart();
 }
 

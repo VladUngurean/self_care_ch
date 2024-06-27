@@ -4,6 +4,16 @@
 
 //TRELLO BOT START
 
+// let cart_items = document.querySelectorAll(".cart-item-name");
+let cart_items = document.querySelectorAll("cart-item");
+cart_items.forEach(e =>{
+    let msg = (
+    e.querySelector(".cart-item-name").innerText +
+    e.querySelector(".cart-item-price").innerText +
+    e.querySelector(".cart-item-quantity").innerText)
+    msg += msg
+})
+
 let productName = document.getElementById("productName");
 const placeOrderForm = document.getElementById("placeOrderForm");
 let buttonOrderSend = document.getElementById("buttonPlaceOrder");
@@ -29,66 +39,32 @@ placeOrderForm.addEventListener("submit", ( e ) =>{
         return false;
 	}
 
-	let massage = `<b>Заявка c сайта(TT): ${productName.value}</b> \n`;
-		massage += `<b>Имя: ${nameInput.value} </b>\n`;
-		massage += `<b>Номер: ${inputPhone.value}</b>\n`;
-	console.log(massage);
-
-	axios.post(URI_API, {
-			chat_id: CHAT_ID,
-			parse_mode: 'html',
-			text: massage
-		})
-		.then( ( res ) => {
-            console.log("all good");
-			// location.href = "thank-you-page.html";
-			// alert("All good!")
-		} )
-		.catch( ( err ) => {
-			console.log(err);
-			alert("Ошибка!")
-			sendOrderForm.reset();
-		} )
-		// .finally( ( err ) => {} );
-	
-        let messageTrelo = `Заявка c сайта(TT): ${productName.value} \n
-        Имя: ${nameInput.value} \n
-        Номер: ${inputPhone.value} \n
-        Адрес:  \n `;
-        console.log(messageTrelo);
-    
-    // Получение списка ID
-    axios.get(`https://api.trello.com/1/boards/${TRELLO_BOARD_ID}/lists?key=${TRELLO_API_KEY}&token=${TRELLO_API_TOKEN}`)
-        .then((res) => {
-            const lists = res.data;
-            const list = lists.find(l => l.name === TRELLO_LIST_NAME);
-            if (list) {
-                // Добавление карточки в список
-                axios.post(`https://api.trello.com/1/cards`, {
-                    key: TRELLO_API_KEY,
-                    token: TRELLO_API_TOKEN,
-                    idList: list.id,
-                    name: `Заявка c сайта: foamtt.codeshop.md \n Имя: ${nameInput.value} \n Номер: ${inputPhone.value}`,
-                    desc: messageTrelo
-                })
-                .then((res) => {
-                    console.log("Заявка успешно добавлена :", res.data);
-                    setTimeout(() => {
-                        location.href = "thank-you-page.html";
-                    }, 100);
-                })
-                .catch((err) => {
-                    console.error("Ошибка при добавлении заявки :", err);
-                    alert("Ошибка при отправке !");
-                });
-            } else {
-                console.error("Список с именем 'Заявки' не найден");
-                alert("Список с именем 'Заявки' не найден");
-            }
+    let cart_items = document.querySelectorAll(".cart-item");
+    let total_price = document.querySelector("#total-total");
+    let msg = "";
+        cart_items.forEach(e =>{
+            msg += 
+            e.querySelector(".cart-item-name").innerText + " " + e.querySelector(".cart-item-price").innerText + "\n" +
+            e.querySelector(".cart-item-quantity").innerText + "\n" + "\n"
         })
-        .catch((err) => {
-            console.error("Ошибка при получении списко:", err);
-            alert("Ошибка при получении списко!");
-        });
+        msg += `Цена: ${total_price.innerText} \n Имя: ${nameInput.value} \n Номер: ${inputPhone.value}\n`;
+        console.log(msg);
+	// console.log(massage);
+
+	// axios.post(URI_API, {
+	// 		chat_id: CHAT_ID,
+	// 		parse_mode: 'html',
+	// 		text: massage
+	// 	})
+	// 	.then( ( res ) => {
+    //         console.log("all good");
+	// 		// location.href = "thank-you-page.html";
+	// 		// alert("All good!")
+	// 	} )
+	// 	.catch( ( err ) => {
+	// 		console.log(err);
+	// 		alert("Ошибка!")
+	// 		sendOrderForm.reset();
+	// 	} )
 });
 

@@ -3,8 +3,8 @@
     {
       "id": 1,
       "name": "Кокосовое масло нерафинированное",
-      "image_primary": "/resources/img/products/p1.jpg",
-      "image_secondary": "/resources/img/products/p3.jpg",
+      "image_primary": "/resources/img/products/coconut_oil1.jpg",
+      "image_secondary": "/resources/img/products/coconut_oil2.jpg",
       "price": 400.00,
       "discounted_price": 580.00,
       "rating": 4,
@@ -17,14 +17,14 @@
       
       "how_use": "Растереть в руках небольшое количество масла и распределить по коже. Оставьте до полного впитывания. Используйте дважды в день и до выхода на солнце. Изделие подходит для использования в солярии.",
       
-      "additional_images": ["/resources/img/products/p4.jpg", "/resources/img/products/p5.jpg"]
+      "additional_images": ["/resources/img/products/coconut_oil1.jpg", "/resources/img/products/coconut_oil2.jpg"]
     }
     ,
     {
       "id": 2,
       "name": "Масло Ши нерафинированное",
-      "image_primary": "/resources/img/products/p1.jpg",
-      "image_secondary": "/resources/img/products/p3.jpg",
+      "image_primary": "/resources/img/products/shea_butter1.jpg",
+      "image_secondary": "/resources/img/products/shea_butter2.jpg",
       "price": 400.00,
       "discounted_price": 580.00,
       "rating": 4,
@@ -37,14 +37,14 @@
       
       "how_use": "Небольшое количество препарата втереть в руки и нанести на кожу. Оставьте до полного впитывания. Используйте два раза в день",
       
-      "additional_images": ["/resources/img/products/p4.jpg", "/resources/img/products/p5.jpg"]
+      "additional_images": ["/resources/img/products/shea_butter1.jpg", "/resources/img/products/shea_butter2.jpg"]
     }
     ,
     {
       "id": 3,
       "name": "Гексагидрат хлорида магния <br> (соль для ванной)",
-      "image_primary": "/resources/img/products/p1.jpg",
-      "image_secondary": "/resources/img/products/p3.jpg",
+      "image_primary": "/resources/img/products/magneziu1.jpg",
+      "image_secondary": "/resources/img/products/magneziu1.jpg",
       "price": 400.00,
       "discounted_price": 580.00,
       "rating": 4,
@@ -57,14 +57,14 @@
       
       "how_use": "Расслабляющая ванна: в ванну с теплой водой насыпать 1-2 стакана соли. Ванна должна длиться не менее 15-20 минут. Не рекомендуется использовать мыло и моющие средства, чтобы не препятствовать всасыванию ионов магния. <br>  <br> Расслабление ног: растворите 1 стакан соли в 5 литрах теплой воды, подержите ступни в ванне 30 минут. <br>  <br> После магниевой ванны промойте кожу чистой водой.",
       
-      "additional_images": ["/resources/img/products/p4.jpg", "/resources/img/products/p5.jpg"]
+      "additional_images": ["/resources/img/products/magneziu1.jpg", "/resources/img/products/magneziu1.jpg"]
     }
     ,
     {
       "id": 4,
       "name": "Лавандовая вода",
-      "image_primary": "/resources/img/products/p1.jpg",
-      "image_secondary": "/resources/img/products/p3.jpg",
+      "image_primary": "/resources/img/products/lavanda_water1.jpg",
+      "image_secondary": "/resources/img/products/lavanda_water1.jpg",
       "price": 57.00,
       "discounted_price": 44.00,
       "rating": 4,
@@ -77,14 +77,14 @@
       
       "how_use": "Аккуратно распылите средство на кожу лица или тела, избегая области вокруг глаз. Как дополнение к маскам или другой косметике. <br> Волосы: Распылите на влажные волосы перед укладкой.",
       
-      "additional_images": ["/resources/img/products/p4.jpg", "/resources/img/products/p5.jpg"]
+      "additional_images": ["/resources/img/products/lavanda_water1.jpg", "/resources/img/products/lavanda_water1.jpg"]
     }
     ,
     {
       "id": 5,
       "name": "Масло сладкого миндаля",
-      "image_primary": "/resources/img/products/p1.jpg",
-      "image_secondary": "/resources/img/products/p3.jpg",
+      "image_primary": "/resources/img/products/sweet_oil1.jpg",
+      "image_secondary": "/resources/img/products/sweet_oil2.jpg",
       "price": 57.00,
       "discounted_price": 44.00,
       "rating": 4,
@@ -97,14 +97,14 @@
       
       "how_use": "Лицо и тело: нанесите небольшое количество масла на лицо и тело, дайте впитаться. Наилучшие результаты получаются при использовании масла два раза в день. <br>  <br> Для массажа: массаж с маслом следует регулярно проводить не реже одного раза в неделю.  <br>  <br> Для волос: вечером небольшое количество масла вотрите в кожу головы. Утром тщательно промойте волосы шампунем. Повторяйте лечение два раза в неделю.",
       
-      "additional_images": ["/resources/img/products/p4.jpg", "/resources/img/products/p5.jpg"]
+      "additional_images": ["/resources/img/products/sweet_oil1.jpg", "/resources/img/products/sweet_oil2.jpg"]
     }
     ,
     {
       "id": 6,
       "name": "Парфюмированный мист для тела",
-      "image_primary": "/resources/img/products/p1.jpg",
-      "image_secondary": "/resources/img/products/p3.jpg",
+      "image_primary": "/resources/img/products/mist_body1.jpg",
+      "image_secondary": "/resources/img/products/mist_body2.jpg",
       "price": 57.00,
       "discounted_price": 44.00,
       "rating": 4,
@@ -117,7 +117,7 @@
       
       "how_use": "",
       
-      "additional_images": ["/resources/img/products/p4.jpg", "/resources/img/products/p5.jpg"]
+      "additional_images": ["/resources/img/products/mist_body1.jpg", "/resources/img/products/mist_body2.jpg"]
     }
   ]
 }

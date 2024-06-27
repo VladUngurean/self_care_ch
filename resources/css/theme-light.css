@@ -5989,14 +5989,23 @@ button.close,
 }
 .product-list-vertical li a {
   position: relative;
+  width: 100%;
 }
 .product-list-vertical li a img {
   transition: all 500ms ease-in-out;
-  margin: 0;
-  width: 100%;
+  padding: 15px;
+  width: 90%;
+  height: 100%;
+  /* max-height: 250px; */
 }
 .product-list-vertical li a img.product-list-primary-img {
   opacity: 1;
+}
+.product-list-vertical li .product-link {
+}
+.product-list-vertical li a img {
+  object-fit: contain;
+  max-height: 250px;
 }
 .product-list-vertical li a img.product-list-secondary-img {
   position: absolute;
@@ -6005,6 +6014,7 @@ button.close,
   bottom: 0;
   left: 0;
   opacity: 0;
+  margin: 0 auto;
 }
 .product-list-vertical li a:hover img.product-list-primary-img {
   opacity: 0;
