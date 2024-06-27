@@ -17,7 +17,9 @@
 	<link href="/resources/css/font-awesome.min.css" rel="stylesheet">
 	<link href="/resources/css/responsive.css" rel="stylesheet">
 
+	<script src="https://unpkg.com/imask"></script>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 	<script src="js/load-products.js"></script>
 
@@ -68,61 +70,56 @@
 		</div>
 	</nav>
 	<!--/ End header -->
-	<div class="cart-widget-container">
-		<div class="cart-widget text-center">
-			<a class="close" id="cart-widget-close">
-				<span class="ti-close"></span>
-			</a>
-			<h1>Goshop</span></h1>
-			<h3 class="section-heading">Your cart</h3>
-			<div id="cart-empty" class="cart-empty">
-				<h4>is empty <span class="ti-face-sad icon"></span> </h4>
-			</div>
-			<!-- container for js inject cart items content -->
-			<div class="items-container" id="items"></div>
-			<!-- container for js inject cart items content -->
+	<form action="" method="get">
+		<div class="cart-widget-container">
+			<div class="cart-widget text-center">
+				<a class="close" id="cart-widget-close">
+					<span class="ti-close"></span>
+				</a>
+				<h1>Goshop</span></h1>
+				<h3 class="section-heading">Your cart</h3>
+				<div id="cart-empty" class="cart-empty">
+					<h4>is empty <span class="ti-face-sad icon"></span> </h4>
+				</div>
+				<!-- container for js inject cart items content -->
+				<div class="items-container" id="items"></div>
+				<!-- container for js inject cart items content -->
 
-			<div class="cart-delivery" id="cart-delivery">
-				<h4 class="section-heading">Delivery option</h4>
-				<div class="custom-radio">
-					<input id="radio1" type="radio" name="delivery" value="10.00" checked>
-					<label for="radio1">domestic delivery ($10)</label>
+				<div class="cart-delivery" id="cart-delivery">
+					<h4 class="section-heading">Delivery option</h4>
+					<div class="custom-radio">
+						<input id="radio1" type="radio" name="delivery" value="10.00" checked>
+						<label for="radio1">domestic delivery ($10)</label>
+					</div>
+
+					<div class="custom-radio">
+						<input id="radio2" type="radio" name="delivery" value="15.00">
+						<label for="radio2">express domestic delivery ($15) </label>
+					</div>
+
+					<div class="custom-radio">
+						<input id="radio3" type="radio" name="delivery" value="20.00">
+						<label for="radio3">worldwide delivery ($20)</label>
+					</div>
+				</div>
+				<div class="cart-summary" id="cart-summary">
+					<h4 class="section-heading">summary</h4>
+					<div class="cart-summary-row" id="cart-total">Total products <span class="cart-value">$<span id="cost_value">0.00</span></span></div>
+					<div class="cart-summary-row">Shipping <span class="cart-value">$<span id="cost_delivery"></span></span></div>
+					<div class="cart-summary-row cart-summary-row-total">Total <span class="cart-value">$<span id="total-total"></span></span></div>
 				</div>
 
-				<div class="custom-radio">
-					<input id="radio2" type="radio" name="delivery" value="15.00">
-					<label for="radio2">express domestic delivery ($15) </label>
-				</div>
-
-				<div class="custom-radio">
-					<input id="radio3" type="radio" name="delivery" value="20.00">
-					<label for="radio3">worldwide delivery ($20)</label>
-				</div>
-			</div>
-			<div class="cart-summary" id="cart-summary">
-				<h4 class="section-heading">summary</h4>
-				<div class="cart-summary-row" id="cart-total">Total products <span class="cart-value">$<span id="cost_value">0.00</span></span></div>
-				<div class="cart-summary-row">Shipping <span class="cart-value">$<span id="cost_delivery"></span></span></div>
-				<div class="cart-summary-row cart-summary-row-total">Total <span class="cart-value">$<span id="total-total"></span></span></div>
-			</div>
-
-			<form action="" method="post" class="cart-form" id="cart-form">
-				<!-- Identify your business so that you can collect the payments. -->
-				<input type="hidden" name="business" value="yourpaypal@email.com">
-				<!-- Specify a Buy Now button. -->
-				<input type="hidden" name="cmd" value="_xclick">
-				<!-- Specify details about the item that buyers will purchase. -->
-				<input type="hidden" name="item_name" value="Goshop shop - checkout">
-				<input type="hidden" name="amount" id="amount" value="">
-				<input type="hidden" name="currency_code" value="USD">
-				<!-- Display the payment button. -->
+				<input id="productName" type="hidden" name="product_name" value="Универсальный пенный очиститель">
+				<input class="field" id="userName" class="form-input" type="text" name="user_name" placeholder="Введите Ваше имя " required minlength="3" maxlength="12" />
+				<input class="field" id="phone" class="form-input" oninput="checkInput()" type="tel" name="user_phone" placeholder="Введите Ваш телефон" required />
 				<button type="submit" name="submit" class="btn btn-default btn-lg">
 					pay pal checkout <span class="ti-arrow-right"></span>
 				</button>
-			</form>
-			<div class="cart-widget-close-overlay"></div>
+				<div class="cart-widget-close-overlay"></div>
+			</div>
 		</div>
-	</div>
+		<input type="hidden">
+	</form>
 	<!-- slider -->
 	<section class="home section image-slider" id="home">
 		<div class="home-slider text-center">
@@ -436,41 +433,36 @@
 										<div class="col-md-5">
 											<span class="product-right-section">
 												<span>$299.00</span>
-												<button class="btn btn-default add-item" type="button" data-image="/resources/img/products/p2.jpg" data-name="Elegant Formal Party Dress" data-cost="299.00" data-id="8">
-													add to cart </button>
+												<button id="modal_button" class="btn btn-default add-item" type="button" data-image="" data-name="" data-cost="" data-id="">add to cart</button>
 											</span>
 										</div>
 									</div>
 								</div>
 								<div class="col-md-8 col-md-push-2 product-description">
-									<h4 class="section-heading">adipisicing elit, sed do eiusmod tempor</h4>
-									<p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, </p>
+									<h4 class="section-heading">название продукта</h4>
+									<!-- <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, </p> -->
 									<p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, </p>
 									<div class="row">
-										<div class="col-md-6"> <img src="/resources/img/products/p7.jpg" class="img-responsive" alt="product image"> </div>
 										<div class="col-md-6">
-											<h4 class="section-heading">adipisicing elit, sed do eiusmod tempor</h4>
-											<p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+											<h4 class="section-heading second_info-title">second info</h4>
+											<p class="second_info-text"> <i>dadadaadada</i> text</p>
 										</div>
 									</div>
 									<div class="product-tabs">
 										<ul class="nav nav-tabs">
-											<li class="active"><a data-toggle="tab" href="#tab1">Details</a></li>
-											<li><a data-toggle="tab" href="#tab2">Info tab</a></li>
-											<li><a data-toggle="tab" href="#tab3">Other info </a></li>
+											<li class="active"><a data-toggle="tab" href="#tab1">Характеристики</a></li>
+											<li><a data-toggle="tab" href="#tab2">Способ применения</a></li>
+											<!-- <li><a data-toggle="tab" href="#tab3">Other info </a></li> -->
 										</ul>
+
 										<div class="tab-content">
 											<div id="tab1" class="tab-pane fade in active">
-												<h4 class="section-heading">details</h4>
-												<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+												<h4 class="section-heading">Характеристики</h4>
+												<p></p>
 											</div>
 											<div id="tab2" class="tab-pane fade">
-												<h4 class="section-heading">Info tab</h4>
-												<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
-											</div>
-											<div id="tab3" class="tab-pane fade">
-												<h4 class="section-heading">other info</h4>
-												<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
+												<h4 class="section-heading">Способ применения</h4>
+												<p></p>
 											</div>
 										</div>
 									</div>
@@ -797,6 +789,7 @@
 
 	<script defer src="js/tt-cart.js"></script>
 	<script defer src="js/main.js"></script>
+	<script src="js/form-req.js"></script>
 
 </body>
 

@@ -51,6 +51,11 @@
     $("body").toggleClass("cart-widget-open");
   });
 
+  //modal button 
+  document.getElementById("modal_button").addEventListener("click", (e)=>{
+    e.target.innerHTML = "added";
+    console.log(e.innerHTML);
+  })
   //initialize swipers
   //home slider
   var swiper = new Swiper(".home-slider", {

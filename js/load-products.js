@@ -3,9 +3,7 @@ async function loadProductsFromJSON() {
         const response = await fetch("../products.json");
         const data = await response.json();
         const products = data.products;
-        const productContainer = document.querySelector(
-            ".swiper-wrappers.product-list.product-list-vertical"
-        );
+        const productContainer = document.querySelector(".swiper-wrappers.product-list.product-list-vertical");
 
         products.forEach((product) => {
             const li = document.createElement("li");
@@ -17,6 +15,8 @@ async function loadProductsFromJSON() {
             productImages.href = "#";
             productImages.dataset.target = "#product-01";
             productImages.dataset.toggle = "modal";
+            productImages.dataset.productId = product.id; // Store product ID
+            productImages.classList.add("product-link"); // Add class for event listener
             const primaryImg = document.createElement("img");
             primaryImg.classList.add("product-list-primary-img");
             primaryImg.src = product.image_primary;
@@ -31,10 +31,12 @@ async function loadProductsFromJSON() {
             productRight.href = "#";
             productRight.dataset.target = "#product-01";
             productRight.dataset.toggle = "modal";
+            productRight.dataset.productId = product.id; // Store product ID
+            productRight.classList.add("product-link"); // Add class for event listener
             productRight.classList.add("product-list-right", "pull-left");
             const productName = document.createElement("span");
             productName.classList.add("product-list-name", "h4", "black-color");
-            productName.textContent = product.name;
+            productName.innerHTML = product.name;
             const productPrice = document.createElement("span");
             productPrice.classList.add("product-list-price");
             productPrice.textContent = "$" + product.price.toFixed(2);
@@ -57,11 +59,76 @@ async function loadProductsFromJSON() {
             productContainer.appendChild(li);
         });
 
+        // Add event listeners to product links
+        document.querySelectorAll(".product-link").forEach(link => {
+            link.addEventListener("click", function(event) {
+                const productId = event.currentTarget.dataset.productId;
+                const product = products.find(p => p.id == productId);
+                if (product) {
+                    populateModal(product);
+                }
+            });
+        });
+
         console.log("Products loaded from JSON!");
     } catch (error) {
         console.error("Error loading products:", error);
     }
 }
+
+function populateModal(product) {
+    // Set the carousel images
+    const carouselInner = document.querySelector(".carousel-inner.cont-slider");
+    const carouselIndicators = document.querySelector(".carousel-indicators");
+    carouselInner.innerHTML = "";
+    carouselIndicators.innerHTML = "";
+
+    const images = [product.image_primary, ...product.additional_images];
+    images.forEach((image, index) => {
+        const carouselItem = document.createElement("div");
+        carouselItem.classList.add("item");
+        if (index === 0) {
+            carouselItem.classList.add("active");
+        }
+        const img = document.createElement("img");
+        img.src = image;
+        carouselItem.appendChild(img);
+        carouselInner.appendChild(carouselItem);
+
+        const indicator = document.createElement("li");
+        if (index === 0) {
+            indicator.classList.add("active");
+        }
+        indicator.dataset.slideTo = index;
+        indicator.dataset.target = "#product-carousel";
+        const indicatorImg = document.createElement("img");
+        indicatorImg.src = image;
+        indicator.appendChild(indicatorImg);
+        carouselIndicators.appendChild(indicator);
+    });
+
+    // Set the modal title and price
+    document.querySelector(".modal-body .nk").innerHTML = product.name;
+    document.querySelector(".modal-body .product-right-section span").textContent = "$" + product.price.toFixed(2);
+
+    // Set the modal description
+    document.querySelector(".modal-body .product-description h4").innerHTML = product.name;
+    document.querySelector(".modal-body .product-description p").textContent = product.description;
+
+    // Set the modal details tab content
+    document.querySelector("#tab1 p").innerHTML = product.details;
+    document.querySelector("#tab2 p").innerHTML = product.how_use;
+    document.querySelector(".second_info-title").innerHTML = product.additional_info_title;
+    document.querySelector(".second_info-text").innerHTML = product.additional_info_text;
+
+    // Set the "add to cart" button data attributes
+    const modalButton = document.querySelector("#modal_button");
+    modalButton.dataset.image = product.image_primary;
+    modalButton.dataset.name = product.name;
+    modalButton.dataset.cost = product.price.toFixed(2);
+    modalButton.dataset.id = product.id;
+}
+
 // Call the function to load products when the page loads
 //   document.addEventListener('DOMContentLoaded', loadProductsFromJSON);
 function addToCart() {
@@ -69,7 +136,6 @@ function addToCart() {
     let curName = 0;
     let curImage = 0; // Add curImage variable
     let cartItems1 = {}; // Use an object to store cart items for the first cart
-    let cartItems2 = {}; // Use an object to store cart items for the second cart
     let fx = 0, fy = 0;
     let tx = 0, ty = 0;
     let curItem = "";
@@ -137,11 +203,9 @@ function addToCart() {
         cost = parseFloat(cost); // Ensure cost is a number
         if (cartItems1[id]) {
             cartItems1[id].quantity += 1;
-            cartItems2[id].quantity += 1;
             updateItemElement(id, cartItems1[id].quantity);
         } else {
             cartItems1[id] = { cost: cost, name: name, image: image, quantity: 1 };
-            cartItems2[id] = { cost: cost, name: name, image: image, quantity: 1 };
             addItemElement(id, cost, name, image);
         }
         updateItemCounter();
@@ -165,7 +229,7 @@ function addToCart() {
             "<span class='cart-item-remove'><span class='ti-close'></span></span>" +
             "<span class='cart-item-increase'>+</span>" +
             "<span class='cart-item-decrease'>-</span>" +
-            "</div>";
+            "</div>" + "";
         document.querySelector("#items").innerHTML += itemHTML;
         // document.querySelector("#cart2 #items").innerHTML += itemHTML;
     }
@@ -173,7 +237,6 @@ function addToCart() {
     function increaseItem(id, cost) {
         if (cartItems1[id]) {
             cartItems1[id].quantity += 1;
-            cartItems2[id].quantity += 1;
             updateItemElement(id, cartItems1[id].quantity);
             addCost(cost);
             updateItemCounter();
@@ -215,7 +278,6 @@ function addToCart() {
             if (!removeElement) {
                 let totalItemCost = cartItems1[id].quantity * cost;
                 delete cartItems1[id];
-                // delete cartItems2[id];
                 document.querySelectorAll("#item" + id).forEach((el) => el.remove());
                 // document.querySelectorAll("#cart2 #item" + id).forEach((el) => el.remove());
                 removeCost(totalItemCost);
