@@ -5217,6 +5217,9 @@ button.close,
 }
 
 .modal-open .modal {
+  width: 100%;
+  max-width: 95%;
+  margin: 0 auto;
   background: rgba(0, 0, 0, 0.8) none repeat scroll 0 0;
   overflow-x: hidden;
   overflow-y: auto;

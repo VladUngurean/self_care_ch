@@ -38,16 +38,8 @@ async function loadProductsFromJSON() {
             const productPrice = document.createElement("span");
             productPrice.classList.add("product-list-price");
             productPrice.textContent = "$" + product.price.toFixed(2);
-            // const ratingArea = document.createElement("span");
-            // ratingArea.classList.add("rating-area");
-            // for (let i = 0; i < product.rating; i++) {
-            //     const star = document.createElement("span");
-            //     star.classList.add("ti-star", "high_light");
-            //     ratingArea.appendChild(star);
-            // }
             productRight.appendChild(productName);
             productRight.appendChild(productPrice);
-            // productRight.appendChild(ratingArea);
 
             const addButton = document.createElement("button");
             addButton.classList.add("btn", "btn-default", "add-item");
@@ -118,7 +110,7 @@ function addToCart() {
             })(
                 setTimeout(function () {
                     addItem(id, curCost, curName, curImage);
-                }, 350)
+                }, 100)
             );
         });
     }
@@ -158,10 +150,10 @@ function addToCart() {
     }
 
     function updateItemElement(id, quantity) {
-        let itemElements1 = document.querySelectorAll("#cart1 #item" + id + " .cart-item-quantity");
-        let itemElements2 = document.querySelectorAll("#cart2 #item" + id + " .cart-item-quantity");
+        let itemElements1 = document.querySelectorAll("#item" + id + " .cart-item-quantity");
+        // let itemElements2 = document.querySelectorAll("#cart2 #item" + id + " .cart-item-quantity");
         itemElements1.forEach((el) => (el.textContent = "Quantity: " + quantity));
-        itemElements2.forEach((el) => (el.textContent = "Quantity: " + quantity));
+        // itemElements2.forEach((el) => (el.textContent = "Quantity: " + quantity));
     }
 
     function addItemElement(id, cost, name, image) {
@@ -174,8 +166,8 @@ function addToCart() {
             "<span class='cart-item-increase'>+</span>" +
             "<span class='cart-item-decrease'>-</span>" +
             "</div>";
-        document.querySelector("#cart1 #items").innerHTML += itemHTML;
-        document.querySelector("#cart2 #items").innerHTML += itemHTML;
+        document.querySelector("#items").innerHTML += itemHTML;
+        // document.querySelector("#cart2 #items").innerHTML += itemHTML;
     }
 
     function increaseItem(id, cost) {
@@ -191,9 +183,9 @@ function addToCart() {
     function decreaseItem(id, cost) {
         if (cartItems1[id]) {
             cartItems1[id].quantity -= 1;
-            cartItems2[id].quantity -= 1;
             if (cartItems1[id].quantity <= 0) {
                 removeItem(id, cost * cartItems1[id].quantity, true); // true to remove item
+                removeCost(cost);
             } else {
                 updateItemElement(id, cartItems1[id].quantity);
                 removeCost(cost);
@@ -223,15 +215,13 @@ function addToCart() {
             if (!removeElement) {
                 let totalItemCost = cartItems1[id].quantity * cost;
                 delete cartItems1[id];
-                delete cartItems2[id];
-                document.querySelectorAll("#cart1 #item" + id).forEach((el) => el.remove());
-                document.querySelectorAll("#cart2 #item" + id).forEach((el) => el.remove());
+                // delete cartItems2[id];
+                document.querySelectorAll("#item" + id).forEach((el) => el.remove());
+                // document.querySelectorAll("#cart2 #item" + id).forEach((el) => el.remove());
                 removeCost(totalItemCost);
             } else {
                 delete cartItems1[id];
-                delete cartItems2[id];
-                document.querySelectorAll("#cart1 #item" + id).forEach((el) => el.remove());
-                document.querySelectorAll("#cart2 #item" + id).forEach((el) => el.remove());
+                document.querySelectorAll("#item" + id).forEach((el) => el.remove());
             }
             updateItemCounter();
         }
@@ -259,7 +249,7 @@ function addToCart() {
         $(".items-counter").empty();
         document.querySelectorAll(".items-counter").forEach(e => {
             e.innerHTML += "<span class='animate'>" + totalQuantity + "<span class='circle'></span></span>";
-        });
+        })
         toggleEmptyCart();
     }
 

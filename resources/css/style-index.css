@@ -1701,36 +1701,43 @@ footer hr {
     padding-top: 31px;
   }
 }
+
 .bottom-bar {
-  background-color: rgba(34, 34, 34, 0.4);
-  width: 100%;
+  opacity: 0;
+  pointer-events: none;
+  z-index: -9;
+  background-color: rgb(34, 34, 34);
+  width: 95%;
   max-width: 500px;
   position: fixed;
-  bottom: 0;
+  bottom: 8px;
   right: 50%;
-  z-index: 9999;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 15px;
+  padding: 8px 15px;
   transform: translateX(50%);
   border-radius: 20px;
 }
+.bottom-bar a {
+  width: 32px;
+  height: 32px;
+}
+
 #cart2 {
   display: block;
   position: relative;
   /* bottom: 15px; */
+  width: 32px;
+  height: 32px;
   /* left: 15px; */
 }
 
 #scrollUp {
   cursor: pointer;
-  border-radius: 5px;
-  background-color: #000;
-  padding: 10px 20px;
-  color: #fff;
-  text-align: center;
-  /* Add any other styles you need */
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
 }
 
 #scrollUp:hover {
