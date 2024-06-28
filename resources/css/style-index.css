@@ -237,12 +237,12 @@ body {
   border: 0 none;
   padding: 2px;
   width: auto;
-  background-color: #ededed;
+  background-color: #b8b8b8;
   font-weight: 700;
 }
 .product-list-vertical .add-item:hover {
+  background-color: #ededed;
   /* transform: scaleY(1); */
-  background-color: #e3934c;
 }
 .product-list li span {
   display: block;
@@ -1781,4 +1781,11 @@ footer hr {
   font-size: 30px;
   width: 30px;
   height: 30px;
+}
+
+.field {
+  height: 40px;
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 15px;
 }

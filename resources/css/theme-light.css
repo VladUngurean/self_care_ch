@@ -3785,8 +3785,8 @@ button.close,
 }
 
 .modal-open .modal {
-  width: 100%;
-  max-width: 95%;
+  width: 95%;
+  max-width: 1170px;
   margin: 0 auto;
   background: rgba(0, 0, 0, 0.8) none repeat scroll 0 0;
   overflow-x: hidden;
@@ -4743,13 +4743,18 @@ button.close,
   display: block;
   float: left;
   padding-left: 15px;
-  width: 80%;
+  width: auto;
 }
 .cart-item-remove {
   position: absolute;
   top: 20px;
   right: 10px;
   cursor: pointer;
+}
+.cart-item-remove .ti-close {
+  width: 20px;
+  height: 20px;
+  font-size: unset;
 }
 .cart-logo {
   text-align: center;
@@ -4913,6 +4918,7 @@ button.close,
   justify-content: center;
   width: 30px;
   height: 30px;
+  user-select: none;
 }
 
 .cart-item-increase,
@@ -4926,6 +4932,7 @@ button.close,
   font-size: 24px;
   font-weight: 400;
   cursor: pointer;
+  user-select: none;
 }
 /* .custom-radio label::before {
   display: inline-block;

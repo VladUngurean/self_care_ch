@@ -51,10 +51,10 @@
 			</div>
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav">
-					<li><a href="#home">home</a></li>
-					<li><a href="#products">products</a></li>
-					<li><a href="#testimonials">testimonials</a></li>
-					<li><a href="#contact">contact</a></li>
+					<li><a href="#home">главная</a></li>
+					<li><a href="#products">продукты</a></li>
+					<li><a href="#testimonials">отзывы</a></li>
+					<li><a href="#contact">контакты</a></li>
 					<li id="header-cart">
 						<div class="shopping-cart-container" id="cart1">
 
@@ -80,12 +80,12 @@
 		<div class="cart-widget-container">
 			<div class="cart-widget text-center">
 				<a class="close" id="cart-widget-close">
-					<span class="ti-close"></span>
+					<span class="ti-close">X</span>
 				</a>
 				<h1>Goshop</span></h1>
-				<h3 class="section-heading">Your cart</h3>
+				<h3 class="section-heading">Корзина</h3>
 				<div id="cart-empty" class="cart-empty">
-					<h4>is empty <span class="ti-face-sad icon"></span> </h4>
+					<h4>Ваша корзина пуста. Помогите ей наполниться, вернитесь к покупкам! <span class="ti-face-sad icon"></span> </h4>
 				</div>
 				<!-- container for js inject cart items content -->
 				<div class="items-container" id="items"></div>
@@ -94,27 +94,27 @@
 				<div class="cart-delivery" id="cart-delivery">
 					<h4 class="section-heading">Доставка</h4>
 					<div class="custom-radio">
-						<input id="radio1" type="radio" name="delivery" value="10.00" checked>
+						<input id="radio1" type="radio" name="delivery" value="20" checked>
 						<label for="radio1">По Кишиневу 20 лей</label>
 					</div>
 
 					<div class="custom-radio">
-						<input id="radio2" type="radio" name="delivery" value="15.00">
+						<input id="radio2" type="radio" name="delivery" value="50">
 						<label for="radio2">Nova Poshta</label>
 					</div>
 				</div>
 				<div class="cart-summary" id="cart-summary">
-					<h4 class="section-heading">summary</h4>
-					<div class="cart-summary-row" id="cart-total">Total products <span class="cart-value">$<span id="cost_value">0.00</span></span></div>
-					<div class="cart-summary-row">Shipping <span class="cart-value">$<span id="cost_delivery"></span></span></div>
-					<div class="cart-summary-row cart-summary-row-total">Total <span class="cart-value">$<span id="total-total"></span></span></div>
+					<h4 class="section-heading">Стоимость</h4>
+					<div class="cart-summary-row" id="cart-total">Цена <span class="cart-value"><span id="cost_value">0.00</span> лей</span></div>
+					<div class="cart-summary-row">Доставка <span class="cart-value"><span id="cost_delivery"></span> лей</span></div>
+					<div class="cart-summary-row cart-summary-row-total">Итого <span class="cart-value"><span id="total-total"></span> лей</span></div>
 				</div>
 
 
 				<input class="field" id="userName" class="form-input" type="text" name="user_name" placeholder="Введите Ваше имя " required minlength="3" maxlength="12" />
 				<input class="field" id="phone" class="form-input" oninput="checkInput()" type="tel" name="user_phone" placeholder="Введите Ваш телефон" required />
-				<button type="submit" name="submit" class="btn btn-default btn-lg">
-					pay pal checkout <span class="ti-arrow-right"></span>
+				<button id="sendOrderBtn" type="submit" name="submit" class="btn btn-default btn-lg">
+					Оформить заказ <span class="ti-arrow-right"></span>
 				</button>
 				<div class="cart-widget-close-overlay"></div>
 			</div>
@@ -216,7 +216,7 @@
 		<div class="container overflow-hidden">
 			<div class="row">
 				<div class="col-md-12">
-					<h3 class="section-heading">Featured Products</h3>
+					<h3 class="section-heading">Наши Продукты</h3>
 				</div>
 				<div class="col-md-12">
 					<div class="product-list-sliderd">

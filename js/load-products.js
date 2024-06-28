@@ -219,13 +219,15 @@ function addToCart() {
         itemElements1.forEach((el) => (el.textContent = quantity));
         // itemElements2.forEach((el) => (el.textContent = "Quantity: " + quantity));
     }
-
+    
+    let garbageSVG = '<svg fill="#f35a3f" height="20px" width="20px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 318.317 318.317" xml:space="preserve" stroke="#f35a3f"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <path d="M269.889,34.498h-50.983V13.273C218.906,5.954,212.952,0,205.633,0h-18.937c-2.762,0-5,2.238-5,5s2.238,5,5,5h18.937 c1.805,0,3.273,1.468,3.273,3.273v21.226h-99.495V13.273c0-1.805,1.468-3.273,3.273-3.273h58.013c2.762,0,5-2.238,5-5s-2.238-5-5-5 h-58.013c-7.319,0-13.273,5.954-13.273,13.273v21.226H74.496c-2.761,0-5,2.238-5,5c0,2.762,2.239,5,5,5h195.393 c0.283,0,0.514,0.23,0.514,0.514v29.012c0,0.283-0.23,0.514-0.514,0.514H57.934h-9.506c-0.283,0-0.514-0.23-0.514-0.514V45.012 c0-0.283,0.231-0.514,0.514-0.514h8.269c2.761,0,5-2.238,5-5c0-2.762-2.239-5-5-5h-8.269c-5.797,0-10.514,4.717-10.514,10.514 v29.012c0,5.797,4.716,10.514,10.514,10.514h9.506V280.85c0,20.66,16.808,37.468,37.468,37.468h73.294c2.762,0,5-2.238,5-5 c0-2.762-2.238-5-5-5H95.403c-15.146,0-27.468-12.322-27.468-27.468V84.537h182.448V280.85c0,15.145-12.322,27.468-27.468,27.468 h-34.218c-2.762,0-5,2.238-5,5c0,2.762,2.238,5,5,5h34.218c20.66,0,37.468-16.808,37.468-37.468V84.537h9.507 c5.797,0,10.514-4.717,10.514-10.514V45.012C280.403,39.215,275.686,34.498,269.889,34.498z"></path> <path d="M92.412,207.406c-2.761,0-5,2.238-5,5v64.496c0,2.762,2.239,5,5,5c2.761,0,5-2.238,5-5v-64.496 C97.412,209.645,95.173,207.406,92.412,207.406z"></path> <path d="M97.412,101.411c0-2.762-2.239-5-5-5c-2.761,0-5,2.238-5,5v86.996c0,2.762,2.239,5,5,5c2.761,0,5-2.238,5-5V101.411z"></path> <path d="M131.41,101.411v175.491c0,2.762,2.239,5,5,5c2.761,0,5-2.238,5-5V101.411c0-2.762-2.239-5-5-5 C133.649,96.411,131.41,98.649,131.41,101.411z"></path> <path d="M224.405,136.561c2.762,0,5-2.238,5-5v-30.15c0-2.762-2.238-5-5-5c-2.762,0-5,2.238-5,5v30.15 C219.405,134.323,221.643,136.561,224.405,136.561z"></path> <path d="M219.405,152.494c0,2.762,2.238,5,5,5c2.762,0,5-2.238,5-5v-5.515c0-2.762-2.238-5-5-5c-2.762,0-5,2.238-5,5V152.494z"></path> <path d="M219.405,276.902c0,2.762,2.238,5,5,5c2.762,0,5-2.238,5-5V168.895c0-2.762-2.238-5-5-5c-2.762,0-5,2.238-5,5V276.902z"></path> <path d="M180.408,251.904c2.762,0,5-2.238,5-5V101.411c0-2.762-2.238-5-5-5s-5,2.238-5,5v145.493 C175.408,249.666,177.646,251.904,180.408,251.904z"></path> <path d="M185.408,276.902v-13.499c0-2.762-2.238-5-5-5s-5,2.238-5,5v13.499c0,2.762,2.238,5,5,5S185.408,279.664,185.408,276.902z"></path> </g> </g></svg>'
+    
     function addItemElement(id, cost, name, image) {
         let itemHTML = "<div class='cart-item' id='item" + id + "' data-id='" + id + "'>" +
             "<span class='cart-item-image'><img alt='" + name + "' src='" + image + "'/></span>" +
             "<span class='cart-item-name h4'>" + name + "</span>" +
-            "<span class='cart-item-price'>$<span class='cvalue'>" + cost + "</span></span>" +
-            "<span class='cart-item-remove'><span class='ti-close'></span></span>" +
+            "<span class='cart-item-price'><span class='cvalue'>" + cost + "</span> лей</span>" +
+            "<span class='cart-item-remove'><span class='ti-close'>" + garbageSVG + "</span></span>" +
             "<div class='cart-item-counter'> <span class='cart-item-increase'>+</span> <span class='cart-item-quantity'>1</span> <span class='cart-item-decrease'>-</span> </div>" +
             "</div>";
         document.querySelector("#items").innerHTML += itemHTML;
@@ -243,6 +245,9 @@ function addToCart() {
 
     function decreaseItem(id, cost) {
         if (cartItems1[id]) {
+            if (cartItems1[id].quantity <= 1) {
+                return;
+            }
             cartItems1[id].quantity -= 1;
             if (cartItems1[id].quantity <= 0) {
                 removeItem(id, cost * cartItems1[id].quantity, true); // true to remove item
@@ -342,35 +347,27 @@ function addToCart() {
 
     function toggleEmptyCart() {
         if (document.querySelectorAll(".cart-item").length >= 1) {
-            document.querySelectorAll("#cart-summary").forEach(e => {
-                e.style.display = "block";
-            });
-            document.querySelectorAll("#cart-delivery").forEach(e => {
-                e.style.display = "block";
-            });
-            document.querySelectorAll("#cart-form").forEach(e => {
-                e.style.display = "block";
-            });
-            document.querySelectorAll("#cart-empty").forEach(e => {
-                e.style.display = "none";
-            });
-            document.querySelectorAll("#items-counter").forEach(e => {
+            document.querySelector("#cart-summary").style.display = "block";
+            document.querySelector("#cart-delivery").style.display = "block";
+            // document.querySelector("#cart-form").style.display = "block";
+            document.querySelector("#cart-empty").style.display = "none";
+            document.querySelector("#userName").style.display = "block";
+            document.querySelector("#phone").style.display = "block";
+            document.querySelector("#sendOrderBtn").style.display = "block";
+            
+            document.querySelectorAll("#items-counter").forEach(e =>{
                 e.style.display = "block";
             });
         } else {
-            document.querySelectorAll("#cart-summary").forEach(e => {
-                e.style.display = "none";
-            });
-            document.querySelectorAll("#cart-delivery").forEach(e => {
-                e.style.display = "none";
-            });
-            document.querySelectorAll("#cart-form").forEach(e => {
-                e.style.display = "none";
-            });
-            document.querySelectorAll("#cart-empty").forEach(e => {
-                e.style.display = "block";
-            });
-            document.querySelectorAll("#items-counter").forEach(e => {
+            document.querySelector("#cart-summary").style.display = "none";
+            document.querySelector("#cart-delivery").style.display = "none";
+            // document.querySelector("#cart-form").style.display = "none";
+            document.querySelector("#cart-empty").style.display = "block";
+            document.querySelector("#userName").style.display = "none";
+            document.querySelector("#phone").style.display = "none";
+            document.querySelector("#sendOrderBtn").style.display = "none";
+
+            document.querySelectorAll("#items-counter").forEach(e =>{
                 e.style.display = "none";
             });
         }
@@ -393,3 +390,45 @@ async function addFunctionality() {
 }
 
 addFunctionality(); // Call the second function to start the process
+
+// test
+document.addEventListener('DOMContentLoaded', function() {
+    // Function to check and update button background colors
+    function checkAndUpdateButtons() {
+        // Get all buttons and reset their background color to gray
+        const allButtons = document.querySelectorAll('.btn');
+        allButtons.forEach(button => {
+            button.style.backgroundColor = '';
+        });
+
+        // Get all cart items within #items
+        const items = document.querySelectorAll('#items .cart-item');
+
+        // Iterate over each item
+        items.forEach(item => {
+            // Get the data-id of the current item
+            const itemId = item.getAttribute('data-id');
+            
+            // Find the button with the matching data-id
+            const button = document.querySelector(`.btn[data-id="${itemId}"]`);
+            
+            // If the button exists, change its background color to red
+            if (button) {
+                button.style.backgroundColor = '#5cba48';
+            }
+        });
+    }
+
+    // Observe changes to the element with id="items"
+    const itemsContainer = document.getElementById('items');
+    const observer = new MutationObserver(checkAndUpdateButtons);
+    
+    // Configuration of the observer
+    const config = { childList: true, subtree: true };
+
+    // Start observing the target node for configured mutations
+    observer.observe(itemsContainer, config);
+
+    // Initial check
+    checkAndUpdateButtons();
+});
