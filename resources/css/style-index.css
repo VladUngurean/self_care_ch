@@ -18,6 +18,7 @@ Version: 1.0.0
 
 html {
   scroll-behavior: smooth;
+  font-family: "Montserrat", sans-serif;
 }
 body {
   margin: 0 auto;
@@ -229,19 +230,19 @@ body {
   color: #f63440;
 }
 .product-list-vertical .add-item {
-  display: inline-block;
-  float: none;
-  transform: scaleY(1);
+  height: 36px;
+  float: right;
   transition: all 0.4s ease 0s;
   margin: 0 !important;
   border: 0 none;
-  padding: 0;
+  padding: 2px;
   width: auto;
-  color: #121212;
+  background-color: #ededed;
   font-weight: 700;
 }
-.product-list li:hover .add-item {
-  transform: scaleY(1);
+.product-list-vertical .add-item:hover {
+  /* transform: scaleY(1); */
+  background-color: #e3934c;
 }
 .product-list li span {
   display: block;
@@ -804,6 +805,10 @@ a {
   align-items: center;
   justify-content: center;
 }
+.product-list li .product-list-name {
+  height: 40px;
+  font-size: 17px;
+}
 .product-list li span.sale-p {
   position: absolute;
   top: 19px;
@@ -830,8 +835,14 @@ a {
   color: #000;
 }
 .product .product-list-price {
-  display: inline-block;
+  width: auto;
+  height: 36px;
   font-size: 17px;
+  float: left;
+}
+.product-list-vertical li .product-link {
+  padding: 0 15px;
+  /* pointer-events: none; */
 }
 .counter > h2 {
   font-weight: normal;
@@ -1318,7 +1329,7 @@ button.close,
   color: #ffffff;
   font-size: 14px;
   line-height: 50px;
-  font-family: inherit;
+  /* font-family: inherit; */
   text-align: center;
   text-transform: uppercase;
 }
@@ -1331,6 +1342,7 @@ button.close,
 
 .swiper-wrappers li.swiper-slidess {
   text-align: center;
+  cursor: default;
 }
 .product-list li,
 .product-list-vertical .product-list-right {
@@ -1548,7 +1560,6 @@ footer hr {
   color: #000;
   font-size: 20px;
   line-height: 29px;
-  font-family: "Lato", sans-serif;
   text-transform: capitalize;
 }
 .b_red_more {
@@ -1713,7 +1724,7 @@ footer hr {
   opacity: 0;
   pointer-events: none;
   z-index: -9;
-  background-color: rgb(34, 34, 34);
+  background-color: rgb(153, 132, 132);
   width: 95%;
   max-width: 500px;
   position: fixed;
@@ -1763,4 +1774,11 @@ footer hr {
 .item {
   margin-top: 10px;
   padding: 15px;
+}
+
+.ti-close {
+  display: inline-block;
+  font-size: 30px;
+  width: 30px;
+  height: 30px;
 }

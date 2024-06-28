@@ -310,17 +310,7 @@ th {
     border: 1px solid #ddd !important;
   }
 }
-@font-face {
-  src: url("../fonts/glyphicons-halflings-regular.eot");
-  src: url("../fonts/glyphicons-halflings-regulard41d.eot?#iefix")
-      format("embedded-opentype"),
-    url("../fonts/glyphicons-halflings-regular.woff2") format("woff2"),
-    url("../fonts/glyphicons-halflings-regular.woff") format("woff"),
-    url("../fonts/glyphicons-halflings-regular.ttf") format("truetype"),
-    url("../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular")
-      format("svg");
-  font-family: "Glyphicons Halflings";
-}
+
 .glyphicon {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -330,7 +320,6 @@ th {
   font-style: normal;
   font-weight: normal;
   line-height: 1;
-  font-family: "Glyphicons Halflings";
 }
 
 .glyphicon-asterisk:before {
@@ -1403,9 +1392,9 @@ html {
 body {
   background-color: #fff;
   color: #121212;
-  font-size: 15px;
-  line-height: 1.42857;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.2;
 }
 
 input,
@@ -1414,7 +1403,6 @@ select,
 textarea {
   font-size: inherit;
   line-height: inherit;
-  font-family: inherit;
 }
 
 a {
@@ -1514,7 +1502,6 @@ h6,
   color: inherit;
   font-weight: 700;
   line-height: 1;
-  font-family: "Lato", sans-serif;
 }
 h1 small,
 h1 .small,
@@ -3247,7 +3234,6 @@ legend {
   color: #efb920;
   font-size: 32.1429px;
   line-height: inherit;
-  font-family: "Lato", sans-serif;
 }
 
 label {
@@ -5178,7 +5164,7 @@ tbody.collapse.in {
 .container-header {
   position: fixed;
   top: 0;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgb(255, 255, 255);
   width: 100%;
   max-width: 1460px;
 }
@@ -7302,7 +7288,6 @@ button.close {
   font-weight: normal;
   font-size: 13px;
   line-height: 1.42857;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   letter-spacing: normal;
   line-break: auto;
   text-align: left;
@@ -7429,7 +7414,6 @@ button.close {
   font-weight: normal;
   font-size: 15px;
   line-height: 1.42857;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   letter-spacing: normal;
   line-break: auto;
   text-align: left;
@@ -7723,7 +7707,6 @@ button.close {
   width: 20px;
   height: 20px;
   line-height: 1;
-  font-family: serif;
 }
 .carousel-control .icon-prev:before {
   content: "\2039";
@@ -7757,7 +7740,7 @@ button.close {
 }
 .carousel-indicators .active {
   margin: 0;
-  background-color: #efb920;
+  /* background-color: rgba(0, 0, 0, 0.05); */
   width: 12px;
   height: 12px;
 }
