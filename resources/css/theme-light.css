@@ -4765,7 +4765,7 @@ button.close,
   z-index: 99999;
   margin: 30px auto;
   background: #f5f5f5;
-  padding: 60px 30px;
+  padding: 60px 30px 20px;
   width: 480px;
   overflow: auto;
 }

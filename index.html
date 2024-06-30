@@ -26,10 +26,6 @@
 	<script src="https://unpkg.com/imask"></script>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
-	<script src="js/load-products.js"></script>
-
-
 </head>
 
 <body data-offset="50" data-target=".navbar" class="dark-theme index-3">
@@ -74,14 +70,17 @@
 		</div>
 	</nav>
 	<!--/ End header -->
+	<div id="popup-container"></div>
 	<form id="placeOrderForm" action="" method="get">
 		<div class="cart-widget-container">
 			<div class="cart-widget text-center">
 				<a class="close" id="cart-widget-close">
 					<span class="ti-close">X</span>
 				</a>
-				<h1>Self Care</span></h1>
-				<h3 class="section-heading">Корзина</h3>
+				<!-- <h1>Self Care</h1> -->
+				<img class="cart-logo" src="/resources/img/Logo.svg" alt="">
+
+				<h3 class="cart-head section-heading">Корзина</h3>
 				<div id="cart-empty" class="cart-empty">
 					<h4>Ваша корзина пуста. Помогите ей наполниться, вернитесь к покупкам! <span class="ti-face-sad icon"></span> </h4>
 				</div>
@@ -679,7 +678,7 @@
 	</div>
 
 	<div class="bottom-bar">
-		<a href="tel:+000 000 000 00"><svg width="32px" fill="#FFF" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
+		<a href="tel:+373 672 428 77"><svg width="32px" fill="#FFF" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
 				<g id="SVGRepo_bgCarrier" stroke-width="0"></g>
 				<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
 				<g id="SVGRepo_iconCarrier">
@@ -726,6 +725,7 @@
 	<script src="js/bootstrap.min.js"></script>
 
 
+	<script defer src="js/load-products.js"></script>
 	<script defer src="js/tt-cart.js"></script>
 	<script defer src="js/main.js"></script>
 	<script src="js/form-req.js"></script>

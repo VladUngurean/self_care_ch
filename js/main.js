@@ -130,3 +130,29 @@
   //   // scrollText: '<i class="ti-angle-up"></i>',
   // });
 })(jQuery);
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const modalButton = document.querySelector('#modal_button');
+  const popupContainer = document.getElementById('popup-container');
+  
+  modalButton.addEventListener('click', () => {
+    addPopupMessage();
+  });
+
+  function addPopupMessage() {
+      if (popupContainer.children.length >= 3) {
+          popupContainer.removeChild(popupContainer.firstChild);
+      }
+
+      const message = document.createElement('div');
+      message.className = 'popup-message';
+      message.textContent = 'Продукт добавлен в корзину';
+
+      popupContainer.appendChild(message);
+
+      setTimeout(() => {
+          message.remove();
+      }, 2000);
+  }
+});

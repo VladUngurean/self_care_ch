@@ -43,6 +43,7 @@ async function loadProductsFromJSON() {
 
             const addButton = document.createElement("button");
             addButton.classList.add("btn", "btn-default", "add-item");
+            addButton.addEventListener("click", addPopupMessage);
             addButton.type = "button";
             addButton.dataset.image = product.image_primary;
             addButton.dataset.name = product.name;
@@ -355,6 +356,7 @@ function addToCart() {
             document.querySelector("#userName").style.display = "block";
             document.querySelector("#phone").style.display = "block";
             document.querySelector("#sendOrderBtn").style.display = "block";
+            document.querySelector(".cart-head").style.display = "block";
             
             document.querySelectorAll("#items-counter").forEach(e =>{
                 e.style.display = "block";
@@ -367,6 +369,8 @@ function addToCart() {
             document.querySelector("#userName").style.display = "none";
             document.querySelector("#phone").style.display = "none";
             document.querySelector("#sendOrderBtn").style.display = "none";
+            document.querySelector(".cart-head").style.display = "none";
+
 
             document.querySelectorAll("#items-counter").forEach(e =>{
                 e.style.display = "none";
@@ -391,7 +395,6 @@ async function addFunctionality() {
 }
 
 addFunctionality(); // Call the second function to start the process
-
 // test
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -433,3 +436,22 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initial check
     checkAndUpdateButtons();
 });
+
+
+function addPopupMessage() {
+    const popupContainer = document.getElementById('popup-container');
+  
+    if (popupContainer.children.length >= 3) {
+        popupContainer.removeChild(popupContainer.firstChild);
+    }
+
+    const message = document.createElement('div');
+    message.className = 'popup-message';
+    message.textContent = 'Продукт добавлен в корзину';
+
+    popupContainer.appendChild(message);
+
+    setTimeout(() => {
+        message.remove();
+    }, 2000);
+}

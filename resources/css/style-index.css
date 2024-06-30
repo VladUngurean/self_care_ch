@@ -492,12 +492,13 @@ body {
 span.product-right-section .btn.btn-default.add-item,
 .contact-form button.btn {
   transition: all 0.3s ease 0s;
-  border: 1px solid #f63440;
+  border: 1px solid rgb(86, 74, 74);
   border-radius: 5px;
-  background: #f63440 none repeat scroll 0 0;
+  background-color: rgb(153, 132, 132);
   padding: 12px 28px;
   color: #fff;
   font-weight: 700;
+  margin: 0 auto !important;
 }
 .countdown-container .btn.btn-default.add-item:hover,
 .btn.btn-default.btn-lg:hover,
@@ -685,10 +686,11 @@ span.product-right-section .btn.btn-default.add-item:hover,
 .nav-tabs > li.active > a,
 .nav-tabs > li.active > a:hover,
 .nav-tabs > li.active > a:focus {
-  background-color: #f63440;
+  background-color: rgb(153, 132, 132);
+  border-radius: 8px;
 }
 a {
-  color: #f63440;
+  color: #222222;
   text-decoration: none;
 }
 .product-right-section {
@@ -893,7 +895,7 @@ p {
   display: block;
   float: left;
   margin-top: 0;
-  text-align: right;
+  text-align: center;
 }
 .modal-body .product-description {
   float: left;
@@ -903,7 +905,7 @@ p {
 .nav-tabs > li.active > a,
 .nav-tabs > li.active > a:hover,
 .nav-tabs > li.active > a:focus {
-  border: 1px solid #f63440;
+  border: 1px solid rgb(86, 74, 74);
 }
 .product-modal .nav.nav-tabs {
   margin-bottom: 25px;
@@ -1791,4 +1793,57 @@ footer hr {
   width: 100%;
   border-radius: 8px;
   margin-bottom: 15px;
+}
+
+#modal_button {
+  width: 100%;
+  max-width: 220px;
+  border-radius: 8px;
+  padding: 8px;
+  border-color: rgb(86, 74, 74);
+  background-color: rgb(153, 132, 132);
+  color: #fefefe;
+  font-weight: bold;
+}
+#modal_button:hover {
+  background-color: rgba(153, 132, 132, 0.5);
+  color: black;
+}
+
+.cart-logo {
+  width: -moz-available;
+}
+
+#popup-container {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 310px;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.popup-message {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  animation: fadeOut 2s forwards;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
