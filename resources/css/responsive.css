@@ -140,7 +140,7 @@
   }
   .navbar a.navbar-brand {
     margin-top: 11px;
-    margin-bottom: 24px;
+    margin-bottom: 10px;
   }
   .home.image-slider .swiper-slide {
     padding: 150px 20px;
@@ -168,7 +168,7 @@
   .navbar-brand img {
     margin-top: 26px;
     margin-left: 0;
-    max-height: 35px;
+    /* max-height: 35px; */
   }
   .banner-box.banner-type-5 .btn.btn-style-1 {
     width: 200px;
@@ -387,7 +387,7 @@
     margin-bottom: 0px;
   }
   .navbar-header .navbar-toggle {
-    margin-top: 0;
+    margin-top: 10px;
     padding: 0;
   }
 
@@ -438,19 +438,19 @@
   .f_logo img {
     width: 45%;
   }
-  .navbar-brand img {
+  /* .navbar-brand img {
     max-height: 30px;
-  }
+  } */
 }
 
 @media (max-width: 480px) {
   .navbar > .container .navbar-brand {
     margin-top: 0px;
   }
-  .navbar-brand img {
+  /* .navbar-brand img {
     min-height: auto;
     max-height: 20px;
-  }
+  } */
 }
 @media (max-width: 1199px) {
   #header-cart {

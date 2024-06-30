@@ -118,6 +118,7 @@ function populateModal(product) {
     // Set the modal details tab content
     document.querySelector("#tab1 p").innerHTML = product.details;
     document.querySelector("#tab2 p").innerHTML = product.how_use;
+    document.querySelector("#tab3 p").innerHTML = product.details;
     document.querySelector(".second_info-title").innerHTML = product.additional_info_title;
     document.querySelector(".second_info-text").innerHTML = product.additional_info_text;
 

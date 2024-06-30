@@ -4274,7 +4274,7 @@ button.close,
   margin: 40px auto 0;
   border-top: 1px solid #f5f5f5;
   background: #fff;
-  padding: 15px 60px;
+  padding: 15px 10px;
   max-width: 700px;
   overflow: visible;
 }
@@ -4297,7 +4297,7 @@ button.close,
   height: 80px;
 }
 .testimonials-slider p {
-  color: #aaa;
+  color: #464646;
   font-size: 18px;
   line-height: 26px;
 }
