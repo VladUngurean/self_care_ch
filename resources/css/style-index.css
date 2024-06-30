@@ -144,13 +144,13 @@ body {
 .swiper-wrapper .btn-primary {
   border: 1px solid transparent;
   border-radius: 5px;
-  background-color: #f63440;
+  background-color: rgb(153, 132, 132);
   color: #fff;
 }
 .swiper-wrapper .btn-primary:hover {
-  border: 1px solid #f63440 !important;
-  background-color: transparent;
-  color: #f63440;
+  border: 1px solid rgb(153, 132, 132) !important;
+  background-color: rgba(153, 132, 132, 0.2);
+  color: rgb(0, 0, 0);
 }
 .product-list-sliderd {
   display: block;
@@ -1756,6 +1756,9 @@ footer hr {
   border-radius: 50%;
   width: 32px;
   height: 32px;
+}
+#scrollUp svg {
+  transform: rotate(180deg);
 }
 
 #scrollUp:hover {

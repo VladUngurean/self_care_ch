@@ -216,7 +216,7 @@
   }
   .swiper-wrapper .btn-primary {
     display: inline-block;
-    width: 66%;
+    /* width: 66%; */
   }
   .home-buttons a {
     padding: 15px 30px;
