@@ -3788,7 +3788,7 @@ button.close,
   width: 95%;
   max-width: 1170px;
   margin: 0 auto;
-  background: rgba(0, 0, 0, 0.8) none repeat scroll 0 0;
+  /* background: rgba(0, 0, 0, 0.8) none repeat scroll 0 0; */
   overflow-x: hidden;
   overflow-y: auto;
 }
