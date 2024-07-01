@@ -1505,6 +1505,10 @@ section.section-min.nnrr {
 }
 .index-3 .swiper-slide h1 {
   font-size: 40px;
+  background-color: rgba(255, 255, 255, 0.3);
+  width: fit-content;
+  padding: 8px;
+  border-radius: 8px;
 }
 .index-3 .home h2 {
   font-size: 30px;

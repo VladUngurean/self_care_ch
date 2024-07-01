@@ -45,7 +45,7 @@ placeOrderForm.addEventListener("submit", ( e ) =>{
         cart_items.forEach(e =>{
             message += 
             e.querySelector(".cart-item-name").innerText + " " + e.querySelector(".cart-item-price").innerText + "\n" +
-            e.querySelector(".cart-item-quantity").innerText + "\n" + "\n"
+            e.querySelector(".cart-item-quantity").innerText + " шт." + "\n" + "\n"
         })
         message += `Цена: ${total_price.innerText} \n Имя: ${nameInput.value} \n Номер: ${inputPhone.value}\n`;
         console.log(message);
