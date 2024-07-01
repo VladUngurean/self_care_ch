@@ -4567,8 +4567,8 @@ button.close,
 .product-list-vertical li a img.product-list-primary-img {
   opacity: 1;
 }
-.product-list-vertical li .product-link {
-}
+/* .product-list-vertical li .product-link {
+} */
 .product-list-vertical li a img {
   object-fit: contain;
   max-height: 250px;

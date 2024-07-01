@@ -277,9 +277,9 @@
   .swiper-wrappers li.swiper-slidess {
     width: 100%;
   }
-  .swiper-wrappers li.swiper-slidess .product-list-left {
-    /* margin-bottom: 18px; */
-  }
+  /* .swiper-wrappers li.swiper-slidess .product-list-left {
+    margin-bottom: 18px;
+  } */
   .info_menu {
     display: block;
     margin: 35px 0;
@@ -432,9 +432,9 @@
   .swiper-wrappers li.swiper-slidess {
     width: 100%;
   }
-  .swiper-wrappers li.swiper-slidess .product-list-left {
-    /* margin-bottom: 18px; */
-  }
+  /* .swiper-wrappers li.swiper-slidess .product-list-left {
+    margin-bottom: 18px;
+  } */
   .f_logo img {
     width: 45%;
   }

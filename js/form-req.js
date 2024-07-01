@@ -58,7 +58,7 @@ placeOrderForm.addEventListener("submit", ( e ) =>{
 		})
 		.then( ( res ) => {
             console.log("all good");
-			// location.href = "thank-you-page.html";
+			location.href = "thank-you-page.html";
 			// alert("All good!")
 		} )
 		.catch( ( err ) => {
