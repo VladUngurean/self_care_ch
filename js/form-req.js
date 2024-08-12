@@ -115,12 +115,13 @@ async function getLocation() {
 		console.log(data);
 
 		const userLocation = data;
-		const message = `${datetime}\nTimesReturned: ${TIMES_RETURNED}\nUniqueName: ${uniqueName}\nWebsite: SelfCare\nLocation: ${userLocation.city}\nCountry: ${userLocation.country_name}`;
+		let message = `${datetime}\nTimesReturned: ${TIMES_RETURNED}\nUniqueName: ${uniqueName}\nWebsite: SelfCare\nLocation: ${userLocation.city}\nCountry: ${userLocation.country_name}`;
 		console.log(message);
 		return message;
 	} catch (error) {
 		console.error('Error fetching location:', error);
-		return "Failed to retrieve location";
+		let message = `${datetime}\nTimesReturned: ${TIMES_RETURNED}\nUniqueName: ${uniqueName}\nWebsite: SelfCare\nLocation: ${userLocation.city}\nCountry: ${userLocation.country_name}`;
+		return message;
 	}
 }
 
