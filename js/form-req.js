@@ -115,7 +115,7 @@ async function getLocation() {
 		console.log(data);
 
 		const userLocation = data;
-		const message = `${datetime}\nTimesReturned: ${TIMES_RETURNED}\nUniqueName: ${uniqueName}\nWebsite: Portfolio\nLocation: ${userLocation.city}\nCountry: ${userLocation.country_name}`;
+		const message = `${datetime}\nTimesReturned: ${TIMES_RETURNED}\nUniqueName: ${uniqueName}\nWebsite: SelfCare\nLocation: ${userLocation.city}\nCountry: ${userLocation.country_name}`;
 		console.log(message);
 		return message;
 	} catch (error) {
